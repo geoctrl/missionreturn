@@ -1,0 +1,118 @@
+/* old hero
+section.hero {
+  position: relative;
+  @include gradient2(#66aef2, #4677a6, -60deg, 0%, 110%);
+
+  .hero-title {
+    text-align: center;
+    color: #fff;
+    font-size: 28px;
+    line-height: 1.2em;
+    margin-top: 20px;
+    text-shadow: 0 2px 0 $color-blue-5;
+    @include clearfix;
+  }
+
+  .hero-description {
+    text-align: center;
+    color: $color-grey-5;
+    font-size: 20px;
+  }
+
+  .hero-svg-container {
+    position: relative;
+    clear: both;
+    height: 240px;
+    width: 100%;
+    right: 0;
+
+    .svg-computer-container {
+      width: 400px;
+      height: 325px;
+      position: absolute;
+      bottom: 1px;
+      display: none;
+      -webkit-transition: margin 300ms ease, right 300ms ease;
+      -moz-transition: margin 300ms ease, right 300ms ease;
+      -ms-transition: margin 300ms ease, right 300ms ease;
+      -o-transition: margin 300ms ease, right 300ms ease;
+      transition: margin 300ms ease, right 300ms ease;
+
+      img {
+        position: absolute;
+        width: 400px;
+        height: 325px;
+        opacity: 0;
+      }
+
+
+      #svg-computer {
+        position: absolute;
+
+        path {
+          opacity: 0;
+        }
+      }
+    }
+
+    .svg-laptop-container {
+      width: 320px;
+      height: 191px;
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      margin-right: -160px;
+      -webkit-transition: margin 300ms ease, right 300ms ease;
+      -moz-transition: margin 300ms ease, right 300ms ease;
+      -ms-transition: margin 300ms ease, right 300ms ease;
+      -o-transition: margin 300ms ease, right 300ms ease;
+      transition: margin 300ms ease, right 300ms ease;
+
+
+      img {
+        position: absolute;
+        width: 320px;
+        height: 191px;
+        opacity: 0;
+      }
+
+
+      #svg-laptop {
+        position: absolute;
+
+        path {
+          opacity: 0;
+        }
+      }
+    }
+
+  }
+
+  @include breakpoint(tablet) {
+
+    .hero-svg-container {
+      height: 400px;
+
+      .svg-computer-container {
+        display: block;
+        right: 50%;
+        margin-right: -305px;
+      }
+
+      .svg-laptop-container {
+        width: 370px;
+        height: 221px;
+        right: 50%;
+        margin-right: -80px;
+
+        img {
+          width: 370px;
+          height: 221px;
+        }
+      }
+    }
+
+  }
+}
+
+*/

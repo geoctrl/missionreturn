@@ -1,0 +1,20 @@
+[
+  {
+    "name": "John Doe",
+    "gender": "male",
+    "image": "img.png",
+    "uri": "john-doe",
+    "date_joined": 1427172542,
+    "date_updated": 1427172588,
+    "mission": {
+      "name": "Arizona Tempe Mission",
+      "date_start": 1154753384,
+      "date_end": 1218516584,
+      "language": "en"
+    },
+    "current": {
+      "area": "Gilbert",
+      "companion": "Elder Scott"
+    }
+  }
+]

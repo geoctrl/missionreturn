@@ -1,0 +1,110 @@
+.hidden-xs,
+.hidden-sm,
+.hidden-md,
+.hidden-lg {
+  display: none;
+}
+
+.visible-xs-block,
+.visible-xs-inline,
+.visible-xs-inline-block,
+.visible-sm-block,
+.visible-sm-inline,
+.visible-sm-inline-block,
+.visible-md-block,
+.visible-md-inline,
+.visible-md-inline-block,
+.visible-lg-block,
+.visible-lg-inline,
+.visible-lg-inline-block {
+  display: none !important;
+}
+
+.visible-xs-block {
+  @media (max-width: $break-tablet - 1) {
+    display: block !important;
+  }
+}
+.visible-xs-inline {
+  @media (max-width: $break-tablet - 1) {
+    display: inline !important;
+  }
+}
+.visible-xs-inline-block {
+  @media (max-width: $break-tablet - 1) {
+    display: inline-block !important;
+  }
+}
+
+.visible-sm-block {
+  @media (min-width: $break-tablet) and (max-width: $break-computer - 1) {
+    display: block !important;
+  }
+}
+.visible-sm-inline {
+  @media (min-width: $break-tablet) and (max-width: $break-computer - 1) {
+    display: inline !important;
+  }
+}
+.visible-sm-inline-block {
+  @media (min-width: $break-tablet) and (max-width: $break-computer - 1) {
+    display: inline-block !important;
+  }
+}
+
+.visible-md-block {
+  @media (min-width: $break-computer) and (max-width:  $break-computer-wide - 1) {
+    display: block !important;
+  }
+}
+.visible-md-inline {
+  @media (min-width: $break-computer) and (max-width: $break-computer-wide - 1) {
+    display: inline !important;
+  }
+}
+.visible-md-inline-block {
+  @media (min-width: $break-computer) and (max-width: $break-computer-wide - 1) {
+    display: inline-block !important;
+  }
+}
+
+.visible-lg-block {
+  @media (min-width: $break-computer-wide) {
+    display: block !important;
+  }
+}
+.visible-lg-inline {
+  @media (min-width: $break-computer-wide) {
+    display: inline !important;
+  }
+}
+.visible-lg-inline-block {
+  @media (min-width: $break-computer-wide) {
+    display: inline-block !important;
+  }
+}
+
+
+// Print utilities
+
+.visible-print-block {
+  display: none !important;
+
+  @media print {
+    display: block !important;
+  }
+}
+.visible-print-inline {
+  display: none !important;
+
+  @media print {
+    display: inline !important;
+  }
+}
+.visible-print-inline-block {
+  display: none !important;
+
+  @media print {
+    display: inline-block !important;
+  }
+}

@@ -1,0 +1,387 @@
+button {
+  font-family: $base-font-family;
+}
+
+.btn {
+  font-size: $base-font-size;
+  font-weight: $font-weight-bold;
+  height: auto;
+  padding: 6px 10px;
+  border: solid 1px $color-grey-3;
+  border-radius: 3px;
+  background-color: #fff;
+  color: $color-grey-3;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  -webkit-transition: background 200ms ease, border 200ms ease, color 200ms ease;
+  -moz-transition: background 200ms ease, border 200ms ease, color 200ms ease;
+  -ms-transition: background 200ms ease, border 200ms ease, color 200ms ease;
+  -o-transition: background 200ms ease, border 200ms ease, color 200ms ease;
+  transition: background 200ms ease, border 200ms ease, color 200ms ease;
+  
+  &:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  &:hover {
+    text-decoration: none;
+    background-color: $color-grey-3;
+    color: #fff;
+  }
+  
+  &:active {
+    text-decoration: none;
+  }
+  
+  &:focus {
+    text-decoration: none;
+  }
+  
+  i {
+    vertical-align: middle;
+  }
+
+  /*------------------------------------
+    large
+  ------------------------------------*/
+  &.btn-lg {
+    padding: 10px 14px;
+    font-size: 1.2em;
+  }
+  
+  &.btn-close {
+    border-radius: 100%;
+    height: 32px;
+    width: 32px;
+    padding: 5px 0;
+    
+    &.btn-close-sm {
+      width: 20px;
+      height: 20px;
+      padding: 2px 0;
+      
+      i {
+        font-size: 16px;
+      }
+    }
+  }
+
+  /*------------------------------------
+  block
+  ------------------------------------*/
+  &.btn-block {
+    display: block;
+    width: 100%;
+  }
+  
+  /*------------------------------------
+  close
+  ------------------------------------*/
+  &.btn-close {
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
+    border: none;
+    background-color: transparent;
+    padding: 5px 0;
+    color: $color-grey-3;
+    text-align: center;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    &:hover {
+      background-color: $color-white-3;
+    }
+  }
+  
+  /*------------------------------------
+    white
+  ------------------------------------*/
+  &.btn-white {
+    background-color: transparent;
+    border-color: #fff;
+    color: #fff;
+    
+    &:hover {
+      background-color: #fff;
+      color: $color-grey-5;
+    }
+  }
+  
+  &.btn-white-fill {
+    background-color: #fff;
+    border-color: #fff;
+    color: $color-grey-5;
+    
+    &:hover {
+      background-color: $color-white-4;
+      border-color: $color-white-4;
+    }
+  }
+  
+  &.btn-white-transparent {
+    background-color: transparent;
+    color: #fff;
+    border-color: transparent;
+    
+    &:hover {
+      border-color: #fff;
+      background-color: #fff;
+      color: $color-grey-5;
+    }
+  }
+
+  /*------------------------------------
+    black
+  ------------------------------------*/
+  &.btn-black {
+    background-color: transparent;
+    border-color: #404040;
+    color: #404040;
+
+    &:hover {
+      background-color: #404040;
+      color: #fff;
+    }
+  }
+
+  &.btn-black-fill {
+    background-color: #404040;
+    border-color: #404040;
+    color: #fff;
+
+    &:hover {
+      background-color: #404040;
+      border-color: #404040;
+      color: #fff;
+    }
+  }
+
+  &.btn-black-transparent {
+    background-color: transparent;
+    color: #404040;
+    border-color: transparent;
+
+    &:hover {
+      border-color: #404040;
+      background-color: #404040;
+      color: #fff;
+    }
+    
+    &.isActive {
+      background-color: transparent;
+      border-color: #404040;
+    }
+  }
+
+
+
+  /*------------------------------------
+    blue
+  ------------------------------------*/
+  &.btn-blue {
+    background-color: transparent;
+    border-color: $color-blue-500;
+    color: $color-blue-500;
+
+    &:hover {
+      background-color: $color-blue-500;
+      color: #fff;
+    }
+  }
+
+  &.btn-blue-fill {
+    background-color: $color-blue-500;
+    border-color: $color-blue-500;
+    color: #fff;
+
+    &:hover {
+      background-color: $color-blue-600;
+      border-color: $color-blue-600;
+    }
+  }
+
+  &.btn-blue-transparent {
+    background-color: transparent;
+    color: $color-blue-500;
+    border-color: transparent;
+
+    &:hover {
+      border-color: $color-blue-500;
+      background-color: $color-blue-500;
+      color: #fff;
+    }
+  }
+
+
+  /*------------------------------------
+    yellow
+  ------------------------------------*/
+  &.btn-yellow {
+    background-color: transparent;
+    border-color: $color-yellow-500;
+    color: $color-yellow-500;
+
+    &:hover {
+      background-color: $color-yellow-500;
+      color: #fff;
+    }
+  }
+
+  &.btn-yellow-fill {
+    background-color: $color-yellow-600;
+    border-color: $color-yellow-600;
+    color: #fff;
+
+    &:hover {
+      background-color: $color-yellow-700;
+      border-color: $color-yellow-700;
+    }
+  }
+
+  &.btn-yellow-transparent {
+    background-color: transparent;
+    color: $color-yellow-500;
+    border-color: transparent;
+
+    &:hover {
+      border-color: $color-yellow-500;
+      background-color: $color-yellow-500;
+      color: #fff;
+    }
+  }
+
+
+  /*------------------------------------
+    green
+  ------------------------------------*/
+  &.btn-green {
+    background-color: transparent;
+    border-color: $color-green-500;
+    color: $color-green-500;
+
+    &:hover {
+      background-color: $color-green-500;
+      color: #fff;
+    }
+  }
+
+  &.btn-green-fill {
+    background-color: $color-green-500;
+    border-color: $color-green-500;
+    color: #fff;
+
+    &:hover {
+      background-color: $color-green-600;
+      border-color: $color-green-600;
+    }
+  }
+
+  &.btn-green-transparent {
+    background-color: transparent;
+    color: $color-green-500;
+    border-color: transparent;
+
+    &:hover {
+      border-color: $color-green-500;
+      background-color: $color-green-500;
+      color: #fff;
+    }
+  }
+
+  /*------------------------------------
+    red
+  ------------------------------------*/
+  &.btn-red {
+    background-color: transparent;
+    border-color: $color-red-500;
+    color: $color-red-500;
+
+    &:hover {
+      background-color: $color-red-500;
+      color: #fff;
+    }
+  }
+
+  &.btn-red-fill {
+    background-color: $color-red-500;
+    border-color: $color-red-500;
+    color: #fff;
+
+    &:hover {
+      background-color: $color-red-600;
+      border-color: $color-red-600;
+    }
+  }
+
+  &.btn-red-transparent {
+    background-color: transparent;
+    color: $color-red-500;
+    border-color: transparent;
+
+    &:hover {
+      border-color: $color-red-500;
+      background-color: $color-red-500;
+      color: #fff;
+    }
+  }
+
+
+  /*------------------------------------
+    orange
+  ------------------------------------*/
+  &.btn-orange {
+    background-color: transparent;
+    border-color: $color-orange-500;
+    color: $color-orange-500;
+
+    &:hover {
+      background-color: $color-orange-500;
+      color: #fff;
+    }
+  }
+
+  &.btn-orange-fill {
+    background-color: $color-orange-500;
+    border-color: $color-orange-500;
+    color: #fff;
+
+    &:hover {
+      background-color: $color-orange-600;
+      border-color: $color-orange-600;
+    }
+  }
+
+  &.btn-orange-transparent {
+    background-color: transparent;
+    color: $color-orange-500;
+    border-color: transparent;
+
+    &:hover {
+      border-color: $color-orange-500;
+      background-color: $color-orange-500;
+      color: #fff;
+    }
+  }
+
+  /*------------------------------------
+    form submit btn
+  ------------------------------------*/
+  &.tl-btn-form-yellow {
+    width:                  100%;
+    background-color:       $color-yellow-800;
+    border-color:           $color-yellow-800;
+    color:                  $color-white-1;
+
+    &:hover {
+      background-color:       $color-yellow-900;
+      border-color:           $color-yellow-900;
+      color:                  $color-yellow-1;
+    }
+  }
+}

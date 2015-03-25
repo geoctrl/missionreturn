@@ -1,0 +1,67 @@
+@mixin border-radius($topLeft, $topRight, $bottomRight, $bottomLeft) {
+  -webkit-border-radius: $topLeft $topRight $bottomRight $bottomLeft;
+  -moz-border-radius: $topLeft $topRight $bottomRight $bottomLeft;
+  border-radius: $topLeft $topRight $bottomRight $bottomLeft;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $set:"") {
+  -webkit-box-shadow: unquote($set) $top $left $blur $color;
+  -moz-box-shadow: unquote($set) $top $left $blur $color;
+  box-shadow: unquote($set) $top $left $blur $color;
+}
+
+@mixin box-shadow-none {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+@mixin transition($property, $duration, $function) {
+  -webkit-transition: $property $duration $function;
+  -moz-transition: $property $duration $function;
+  -o-transition: $property $duration $function;
+  transition: $property $duration $function;
+}
+
+@mixin transform($value) {
+  -webkit-transform: $value;
+  -moz-transform: $value;
+  -ms-transform: $value;
+  -o-transform: $value;
+  transform: $value;
+}
+
+@mixin box-sizing-border {
+  -webkit-box-sizing: border-box !important;
+  -moz-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+}
+
+@mixin box-sizing-content {
+  -webkit-box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  box-sizing: content-box !important;
+}
+
+@mixin user-select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin gradient2($firstColor, $secondColor, $angle:"", $firstPosition:"", $secondPosition:"") {
+  background: $firstColor;
+  background: -moz-linear-gradient(unquote($angle), $firstColor $firstPosition, $secondColor $secondPosition);
+  background: -webkit-gradient(linear, left top, right bottom,
+          color-stop($firstPosition,$firstColor),
+          color-stop($secondPosition,$secondColor));
+  background: -webkit-linear-gradient(unquote($angle), $firstColor $firstPosition,$secondColor $secondPosition);
+  background: -o-linear-gradient(unquote($angle), $firstColor $firstPosition,$secondColor $secondPosition);
+  background: -ms-linear-gradient(unquote($angle), $firstColor $firstPosition,$secondColor $secondPosition);
+  background: linear-gradient(unquote($angle), $firstColor $firstPosition $secondColor $secondPosition);
+  filter: progid:DXImageTransform.Microsoft.gradient(
+                  startColorstr='$firstColor',
+                  endColorstr='$secondColor',
+                  GradientType=1);
+}
