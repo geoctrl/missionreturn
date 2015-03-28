@@ -4,6 +4,8 @@ var mrApp = angular.module('missionReturnApp', [
 ])
 
     .config(function(RestangularProvider, $urlRouterProvider, $locationProvider) {
+        
+        $locationProvider.html5Mode(true);
         RestangularProvider.setBaseUrl('/api/');
 
         $urlRouterProvider.otherwise('/');

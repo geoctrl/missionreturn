@@ -1,0 +1,29 @@
+.label {
+  border: solid 1px transparent;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 1px 4px;
+  text-decoration: none;
+  display: inline-block;
+  
+  
+  &.label-default {
+    border-color: $color-white-3;
+    background-color: #fff;
+    color: $color-grey-500;
+
+    &:hover {
+      background-color: $color-white-2;
+    }
+  }
+  
+  &.label-primary {
+    background-color: $color-primary-500;
+    border-color: $color-primary-700;
+    color: #fff;
+    
+    &:hover {
+      background-color: $color-primary-700;
+    }
+  }
+}
