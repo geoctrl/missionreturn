@@ -30,25 +30,21 @@ mrApp.directive('header', function() {
                     },
                     close: function() {
                         logoGroupM
-                            .velocity('stop')
                             .velocity({
                                 translateX: '-50px',
                                 opacity: 0
                             });
                         
                         logoGroupM
-                            .velocity('stop')
                             .velocity({
                                 translateX: '-74px'
                             });
                         logoGroupR
-                            .velocity('stop')
                             .velocity({
                                 translateX: '-130px',
                                 opacity: 0
                             })
                         logoPeriod
-                            .velocity('stop')
                             .velocity({
                                 translateX: '-140px'
                             })

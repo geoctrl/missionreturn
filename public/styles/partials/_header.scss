@@ -3,9 +3,14 @@ header {
   
   .header-logo {
     padding: 12px 0;
+    float: left;
     
     svg {
       fill: #fff;
     }
+  }
+
+  .header-login {
+    margin-top: 11px;
   }
 }

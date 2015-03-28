@@ -2,25 +2,38 @@ button {
   font-family: $base-font-family;
 }
 
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top:   4px dashed;
+  border-right: 4px solid transparent;
+  border-left:  4px solid transparent;
+}
+
 .btn {
   font-size: $base-font-size;
   font-weight: $font-weight-bold;
-  height: auto;
-  padding: 6px 10px;
-  border: solid 1px $color-grey-500;
-  border-radius: 3px;
-  background-color: #fff;
+  height: $button-height;
+  padding: 0 10px;
+  line-height: $button-height - $button-line-thickness*2;
+  border: solid $button-line-thickness $color-grey-300;
+  border-radius: $button-border-radius;
+  background-color: rgba(#fff, .4);
   color: $color-grey-500;
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
   position: relative;
   text-align: center;
-  -webkit-transition: background 200ms ease, border 200ms ease, color 200ms ease;
-  -moz-transition: background 200ms ease, border 200ms ease, color 200ms ease;
-  -ms-transition: background 200ms ease, border 200ms ease, color 200ms ease;
-  -o-transition: background 200ms ease, border 200ms ease, color 200ms ease;
-  transition: background 200ms ease, border 200ms ease, color 200ms ease;
+  -webkit-transition: background 200ms ease, border 200ms ease, color 200ms ease, box-shadow 50ms ease;
+  -moz-transition: background 200ms ease, border 200ms ease, color 200ms ease, box-shadow 50ms ease;
+  -ms-transition: background 200ms ease, border 200ms ease, color 200ms ease, box-shadow 50ms ease;
+  -o-transition: background 200ms ease, border 200ms ease, color 200ms ease, box-shadow 50ms ease;
+  transition: background 200ms ease, border 200ms ease, color 200ms ease, box-shadow 50ms ease;
+  @include box-sizing-border();
 
   &:visited {
     color: inherit;
@@ -30,29 +43,39 @@ button {
   &:hover {
     text-decoration: none;
     background-color: $color-grey-500;
+    border-color: transparent;
     color: #fff;
   }
 
   &:active {
     text-decoration: none;
+    outline: none;
   }
 
   &:focus {
+    outline: none;
     text-decoration: none;
   }
 
   i {
-    vertical-align: middle;
+    vertical-align: sub;
+    font-size: 20px;
+    line-height: 1.4em;
   }
 
   /*------------------------------------
     large
   ------------------------------------*/
   &.btn-lg {
-    padding: 10px 14px;
-    font-size: 1.2em;
+    height: $button-height + 18px;
+    line-height: $button-height +18px - $button-line-thickness*2;
+    font-size: 1.3em;
+    padding: 0 18px;
   }
 
+  /*------------------------------------
+    close
+  ------------------------------------*/
   &.btn-close {
     border-radius: 100%;
     height: 32px;
@@ -68,6 +91,14 @@ button {
         font-size: 16px;
       }
     }
+  }
+
+  /*------------------------------------
+    square
+  ------------------------------------*/
+  &.btn-square {
+    padding: 0;
+    width: 32px;
   }
 
   /*------------------------------------
@@ -95,44 +126,48 @@ button {
     right: 20px;
 
     &:hover {
-      background-color: $color-white-3;
+      background-color: $color-grey-100;
     }
   }
+
 
   /*------------------------------------
-    white
+    primary
   ------------------------------------*/
-  &.btn-white {
+  &.btn-primary {
     background-color: transparent;
-    border-color: #fff;
-    color: #fff;
+    border-color: $color-primary-500;
+    color: $color-primary-500;
 
-    &:hover {
-      background-color: #fff;
-      color: $color-grey-900;
+    &:hover, &:active {
+      background-color: $color-primary-500;
+      color: #fff;
     }
   }
 
-  &.btn-white-fill {
-    background-color: #fff;
-    border-color: #fff;
-    color: $color-grey-900;
-
-    &:hover {
-      background-color: $color-white-4;
-      border-color: $color-white-4;
-    }
-  }
-
-  &.btn-white-transparent {
-    background-color: transparent;
-    color: #fff;
+  &.btn-primary-fill {
+    background-color: $color-primary-500;
     border-color: transparent;
+    color: #fff;
 
     &:hover {
-      border-color: #fff;
-      background-color: #fff;
-      color: $color-grey-900;
+      border-color: transparent;
+      background-color: $color-primary-700;
+      color: #fff;
+    }
+  }
+
+  &.btn-primary-transparent {
+    background-color: transparent;
+    color: $color-primary-500;
+    border-color: transparent;
+    @include box-shadow-none();
+
+    &:hover {
+      border-color: transparent;
+      background-color: $color-primary-500;
+      color: #fff;
+
     }
   }
 
@@ -141,42 +176,70 @@ button {
   ------------------------------------*/
   &.btn-black {
     background-color: transparent;
-    border-color: #404040;
-    color: #404040;
+    border-color: $color-grey-900;
+    color: $color-grey-900;
 
     &:hover {
-      background-color: #404040;
+      background-color: $color-primary-500;
+      border-color: transparent;
       color: #fff;
     }
   }
 
   &.btn-black-fill {
-    background-color: #404040;
-    border-color: #404040;
+    background-color: $color-grey-900;
+    border-color: transparent;
     color: #fff;
 
     &:hover {
-      background-color: #404040;
-      border-color: #404040;
+      border-color: transparent;
+      background-color: $color-primary-500;
       color: #fff;
     }
   }
 
   &.btn-black-transparent {
-    background-color: transparent;
-    color: #404040;
-    border-color: transparent;
+    border: transparent;
+    color: $color-grey-900;
+    background: transparent;
+    @include box-shadow-none();
 
     &:hover {
-      border-color: #404040;
-      background-color: #404040;
+      background-color: $color-primary-500;
       color: #fff;
-    }
-
-    &.isActive {
-      background-color: transparent;
-      border-color: #404040;
     }
   }
 
+  /*------------------------------------
+     grey
+   ------------------------------------*/
+  &.btn-grey {
+    border-color: rgba($color-grey-500, .3);
+    background-color: rgba($color-grey-500, .1);
+    color: $color-grey-700;
+
+    &:hover {
+      border-color: rgba($color-grey-500, .5);
+      background-color: rgba($color-grey-500, .3);
+      color: $color-grey-700;
+    }
+  }
+}
+
+.btn-group {
+
+  >.btn {
+    border-radius: 0;
+    float: left;
+    border-right-color: transparent;
+  }
+
+  >.btn:first-child {
+    border-radius: $button-border-radius 0 0 $button-border-radius;
+  }
+
+  >.btn:last-child {
+    border-radius: 0 $button-border-radius $button-border-radius 0;
+    border-right-color: inherit;
+  }
 }

@@ -6,7 +6,7 @@ var app = express();
 
 mongoose.connect('mongodb://localhost/mr');
 
-require('./models/people');
+require('./../models/people');
 
 app.use('/', express.static(__dirname + '/public'));
 
