@@ -1,4 +1,4 @@
-header {
+header.header-main {
   height: 60px;
   
   .header-logo {
@@ -12,5 +12,16 @@ header {
 
   .header-login {
     margin-top: 11px;
+  }
+}
+
+header.header-app {
+  @extend header.header-main;
+  @include box-shadow(0, 2px, 10px, rgba(0,0,0,.3));
+  
+  .header-logo {
+    svg {
+      fill: $color-primary-500;
+    }
   }
 }

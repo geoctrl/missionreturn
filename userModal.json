@@ -2,7 +2,8 @@
   {
     "name": "John Doe",
     "gender": "male",
-    "image": "img.png",
+    "img_profile": 1,
+    "img_background": 2,
     "uri": "john-doe",
     "date_joined": 1427172542,
     "date_updated": 1427172588,
@@ -15,6 +16,20 @@
     "current": {
       "area": "Gilbert",
       "companion": "Elder Scott"
-    }
+    },
+    "images": [
+      {
+        "id": 1,
+        "name": "profile",
+        "description": "description of image",
+        "file": "john-doe-profile.jpg"
+      },
+      {
+        "id": 2,
+        "name": "sunset",
+        "description": "description of image",
+        "file": "john-doe-background.jpg"
+      }
+    ]
   }
 ]

@@ -1,17 +1,14 @@
 mrApp.config(function($stateProvider) {
-        $stateProvider
-            .state('user', {
-                url: '/user/:username',
-                templateUrl: '/app/user/user.html',
-                controller: 'userCtrl'
-            })
-    })
+    $stateProvider
+        .state('user', {
+            url: '/user/:username',
+            templateUrl: '/app/user/user.html',
+            controller: 'userCtrl'
+        })
+})
 
-    .controller('userCtrl', function($scope, Restangular) {
+    .controller('userCtrl', function($scope, UserService) {
 
-        Restangular.one('people').get().then(function(data) {
-            console.log(data);
-        });
+        $scope.user = UserService.getUser('john-doe');
 
-        console.log('user controller')
     });

@@ -46,3 +46,4 @@ Temporary Items
 .idea
 node_modules
 public/lib
+public/data

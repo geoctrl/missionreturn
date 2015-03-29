@@ -4,7 +4,8 @@ var mongoose = require('mongoose')
 PersonSchema = new Schema({
     name: String,
     gender: String,
-    image: String,
+    img_profile: Number,
+    img_background: Number,
     uri: String,
     date_joined: Number,
     date_updated: Number,
@@ -17,7 +18,15 @@ PersonSchema = new Schema({
     current: {
         area: String,
         companion: String
-    }
+    },
+    images: [
+        {
+            id: Number,
+            name: String,
+            description: String,
+            file: String
+        }
+    ]
 });
 
 Person = mongoose.model('Person', PersonSchema, 'people');

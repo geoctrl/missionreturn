@@ -1,9 +1,22 @@
 var express = require('express');
-var app     = express();
 var mongoose = require('mongoose');
+var multer = require('multer');
+var app     = express();
 
+app.use(multer({ dest: './uploads/',
+    rename: function (fieldname, filename) {
+        return filename+Date.now();
+    },
+    onFileUploadStart: function (file) {
+        console.log(file.originalname + ' is starting ...')
+    },
+    onFileUploadComplete: function (file) {
+        console.log(file.fieldname + ' uploaded to  ' + file.path)
+        done=true;
+    }
+}));
 
-mongoose.connect('mongodb://localhost/mr');
+mongoose.connect('mongodb://localhost/missionreturn');
 
 require('./../models/people');
 
