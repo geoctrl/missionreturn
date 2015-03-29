@@ -8,5 +8,5 @@ mrApp.config(function($stateProvider) {
 })
 
     .controller('homeCtrl', function($scope, Restangular) {
-        
+        console.log('test yo')
     });

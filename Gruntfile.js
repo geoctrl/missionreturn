@@ -1,46 +1,59 @@
 module.exports = function(grunt){
 
     require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
-    var devServer = require('servers/server.dev.js');
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-
-        express: {
+        env: {
             dev: {
+                NODE_ENV: 'development'
+            },
+            prod: {
+                NODE_ENV: 'production'
+            }
+        },
+        
+        nodemon: {
+            dev: {
+                script: 'servers/server.dev.js',
                 options: {
-                    port: 3000,
-                    debug: true
-                },
-                server: {
-                    options: {
-                        script: 'servers/server.dev.js'
-                    }
+                    watch: ['servers/*']
                 }
             }
         },
 
+        concurrent: {
+            options: {
+                logConcurrentOutput: true
+            },
+            tasks: ['nodemon', 'watch']
+        },
+
         watch: {
-            express: {
+            options: {
+                livereload: true
+            },
+            css: {
+                files: ['public/styles/main.css']
+            },
+            js: {
+                files: ['public/app/**/*.js']
+            },
+            html: {
                 files: [
-                    ['app/**/*'],
-                    ['img/**/*'],
-                    ['styles/main.css']
-                ],
-                tasks:  [ 'express:dev'],
-                options: {
-                    spawn: false // for grunt-contrib-watch v0.5.0+, "nospawn: true" for lower versions. Without this option specified express won't be reloaded
-                }
+                    ['public/index.html'],
+                    ['public/app/**/*.html']
+                ]
             }
         }
+
 
     });
 
     grunt.registerTask('serve', function (target) {
         grunt.task.run([
-            'express:dev',
-            'watch'
+            'concurrent'
         ]);
     });
 
