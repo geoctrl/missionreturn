@@ -401,7 +401,7 @@ body, html {
 .ti {
   vertical-align: middle; }
 
-.color-blue {
+.color-green {
   color: #86cf82; }
 
 .color-red {
@@ -998,7 +998,7 @@ button {
 h1, h2, h3,
 h4, h5, h6 {
   color: #404040;
-  font-weight: 400;
+  font-weight: 700;
   margin: 14px 0; }
 
 h1 {
@@ -1021,22 +1021,22 @@ h6 {
 
 @media (min-width: 768px) {
   h1 {
-    font-size: 3em; }
+    font-size: 2.4em; }
 
   h2 {
-    font-size: 2.6em; }
+    font-size: 2.1em; }
 
   h3 {
-    font-size: 2.2em; }
+    font-size: 1.9em; }
 
   h4 {
-    font-size: 1.8em; }
+    font-size: 1.7em; }
 
   h5 {
     font-size: 1.4em; }
 
   h6 {
-    font-size: 1em; } }
+    font-size: 1.1em; } }
 p {
   font-size: 16px;
   line-height: 1.4em; }
@@ -1127,7 +1127,7 @@ header {
   height: 900px; }
   .hero-unit .hero-container {
     text-align: center;
-    margin-top: 230px;
+    margin-top: 240px;
     text-shadow: 0 1px 2px #000; }
     .hero-unit .hero-container .hero-logo {
       border-radius: 50%;

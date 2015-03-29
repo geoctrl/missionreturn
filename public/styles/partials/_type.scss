@@ -8,7 +8,7 @@ $font-family-glober: 'Glober', Helvetica, sans-serif;
 h1, h2, h3,
 h4, h5, h6 {
   color: $color-grey-900;
-  font-weight: $font-weight-regular;
+  font-weight: $font-weight-bold;
   margin: 14px 0;
 }
 
@@ -20,12 +20,12 @@ h5  { font-size: 1em; }
 h6  { font-size: 1em; }
 
 @include breakpoint(tablet) {
-  h1  { font-size: 3em; }
-  h2  { font-size: 2.6em; }
-  h3  { font-size: 2.2em; }
-  h4  { font-size: 1.8em; }
+  h1  { font-size: 2.4em; }
+  h2  { font-size: 2.1em; }
+  h3  { font-size: 1.9em; }
+  h4  { font-size: 1.7em; }
   h5  { font-size: 1.4em; }
-  h6  { font-size: 1em; }
+  h6  { font-size: 1.1em; }
 }
 
 p {
