@@ -2,8 +2,8 @@
   {
     "name": "John Doe",
     "gender": "male",
-    "img_profile": 1,
-    "img_background": 2,
+    "img_profile": "john-doe-profile.jpg",
+    "img_background": "john-doe-background.jpg",
     "uri": "john-doe",
     "date_joined": 1427172542,
     "date_updated": 1427172588,
@@ -19,14 +19,10 @@
     },
     "images": [
       {
-        "id": 1,
-        "name": "profile",
         "description": "description of image",
         "file": "john-doe-profile.jpg"
       },
       {
-        "id": 2,
-        "name": "sunset",
         "description": "description of image",
         "file": "john-doe-background.jpg"
       }

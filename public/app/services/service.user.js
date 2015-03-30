@@ -5,7 +5,7 @@ mrApp.factory('UserService', function($q, Restangular) {
         
         getUser: function(userUri) {
 
-            return Restangular.one('people').get({'user-uri': userUri}).$object;
+            return Restangular.one('people', userUri).get().$object;
         }
     }
 });

@@ -4,15 +4,15 @@ var mongoose = require('mongoose')
 PersonSchema = new Schema({
     name: String,
     gender: String,
-    img_profile: Number,
-    img_background: Number,
+    img_profile: String,
+    img_background: String,
     uri: String,
     date_joined: Number,
     date_updated: Number,
     mission: {
         name: Number,
         date_start: Number,
-        date_end: Date,
+        date_end: Number,
         language: String
     },
     current: {
@@ -21,8 +21,6 @@ PersonSchema = new Schema({
     },
     images: [
         {
-            id: Number,
-            name: String,
             description: String,
             file: String
         }

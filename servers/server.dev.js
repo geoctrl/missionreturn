@@ -1,34 +1,30 @@
 var express = require('express');
-var mongoose = require('mongoose');
 var multer = require('multer');
 var app     = express();
-
-app.use(multer({ dest: './uploads/',
-    rename: function (fieldname, filename) {
-        return filename+Date.now();
-    },
-    onFileUploadStart: function (file) {
-        console.log(file.originalname + ' is starting ...')
-    },
-    onFileUploadComplete: function (file) {
-        console.log(file.fieldname + ' uploaded to  ' + file.path)
-        done=true;
-    }
-}));
-
+var router = express.Router();
+var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/missionreturn');
-
 require('./../models/people');
 
-app.use('/', express.static('public/', {'root': __dirname + '/../'}));
+router.use(function(req, res, next) {
+    console.log('authentication/etc');
+    next();
+});
 
-app.get('/api/people', function(req, res) {
-    Person.findOne(function(err, doc) {
+
+router.get('/api/people/:uri', function(req, res) {
+    Person.findOne(req.params.uri, function(err, doc) {
+        console.log(doc)
         res.send(doc)
     })
 });
 
-var router = express.Router();
+
+/**
+ * application routing
+ */
+app.use('/', express.static('public/', {'root': __dirname + '/../'}));
+
 router.route('/*').all(function(req, res, next) {
     res.sendFile('index.html', {'root': __dirname + '/../public/'});
 });

@@ -402,7 +402,7 @@ body, html {
   vertical-align: middle; }
 
 .color-green {
-  color: #86cf82; }
+  color: #f64747; }
 
 .color-red {
   color: #ff795e; }
@@ -714,36 +714,36 @@ button {
       background-color: lightgray; }
   .btn.btn-primary {
     background-color: transparent;
-    border-color: #86cf82;
-    color: #86cf82; }
+    border-color: #f64747;
+    color: #f64747; }
     .btn.btn-primary:hover, .btn.btn-primary:active {
-      background-color: #86cf82;
+      background-color: #f64747;
       color: #fff; }
   .btn.btn-primary-fill {
-    background-color: #86cf82;
+    background-color: #f64747;
     border-color: transparent;
     color: #fff; }
     .btn.btn-primary-fill:hover {
       border-color: transparent;
-      background-color: #659c62;
+      background-color: #c23838;
       color: #fff; }
   .btn.btn-primary-transparent {
     background-color: transparent;
-    color: #86cf82;
+    color: #f64747;
     border-color: transparent;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none; }
     .btn.btn-primary-transparent:hover {
       border-color: transparent;
-      background-color: #86cf82;
+      background-color: #f64747;
       color: #fff; }
   .btn.btn-black {
     background-color: transparent;
     border-color: #404040;
     color: #404040; }
     .btn.btn-black:hover {
-      background-color: #86cf82;
+      background-color: #f64747;
       border-color: transparent;
       color: #fff; }
   .btn.btn-black-fill {
@@ -752,7 +752,7 @@ button {
     color: #fff; }
     .btn.btn-black-fill:hover {
       border-color: transparent;
-      background-color: #86cf82;
+      background-color: #f64747;
       color: #fff; }
   .btn.btn-black-transparent {
     border: transparent;
@@ -762,7 +762,7 @@ button {
     -moz-box-shadow: none;
     box-shadow: none; }
     .btn.btn-black-transparent:hover {
-      background-color: #86cf82;
+      background-color: #f64747;
       color: #fff; }
   .btn.btn-grey {
     border-color: rgba(128, 128, 128, 0.3);
@@ -1042,14 +1042,14 @@ p {
   line-height: 1.4em; }
 
 a {
-  color: #86cf82;
+  color: #f64747;
   text-decoration: none; }
   a:link {
     text-decoration: none; }
   a:visited {
     text-decoration: none; }
   a:hover {
-    color: #86cf82;
+    color: #f64747;
     text-decoration: underline; }
   a:focus {
     text-decoration: underline; }
@@ -1091,7 +1091,7 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="search"]
   -moz-box-shadow: none;
   box-shadow: none; }
   input[type="text"]:focus, input[type="text"]:active, input[type="email"]:focus, input[type="email"]:active, input[type="tel"]:focus, input[type="tel"]:active, input[type="search"]:focus, input[type="search"]:active, select:focus, select:active, textarea:focus, textarea:active {
-    border-color: #86cf82;
+    border-color: #f64747;
     outline: none; }
 
 textarea {
@@ -1122,11 +1122,7 @@ header.header-main, header.header-app {
     margin-top: 11px; }
 
 header.header-app {
-  -webkit-box-shadow:  0 2px 10px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow:  0 2px 10px rgba(0, 0, 0, 0.3);
-  box-shadow:  0 2px 10px rgba(0, 0, 0, 0.3); }
-  header.header-app .header-logo svg {
-    fill: #86cf82; }
+  background-color: #f64747; }
 
 .hero-unit {
   background: url("/img/hero1.jpg") center no-repeat;
@@ -1138,7 +1134,7 @@ header.header-app {
     text-shadow: 0 1px 2px #000; }
     .hero-unit .hero-container .hero-logo {
       border-radius: 50%;
-      background-color: #86cf82;
+      background-color: #f64747;
       width: 80px;
       height: 80px;
       padding: 16px 0;
@@ -1155,3 +1151,9 @@ header.header-app {
       color: #fff;
       font-size: 28px;
       font-weight: 500; }
+
+.user-hero-unit {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 300px; }
