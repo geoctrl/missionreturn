@@ -1,6 +1,9 @@
 [
   {
     "name": "John Doe",
+    "token": "12345678948165151565213",
+    "email": "tony@tute.com",
+    "password": "321654987654",
     "gender": "male",
     "img_profile": "john-doe-profile.jpg",
     "img_background": "john-doe-background.jpg",

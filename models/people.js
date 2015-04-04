@@ -3,6 +3,9 @@ var mongoose = require('mongoose')
 
 PersonSchema = new Schema({
     name: String,
+    token: String,
+    email: String,
+    password: String,
     gender: String,
     img_profile: String,
     img_background: String,

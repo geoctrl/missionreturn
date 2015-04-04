@@ -1,11 +1,11 @@
-mrApp.factory('UserService', function($q, Restangular) {
+mrApp.factory('UserService', function(Restangular) {
     var user;
     
     return {
         
         getUser: function(userUri) {
 
-            return Restangular.one('people', userUri).get().$object;
+            return user = Restangular.one('people', userUri).get().$object;
         }
     }
 });

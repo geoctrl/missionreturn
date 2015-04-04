@@ -13,6 +13,9 @@ $base-font-family: 'Glober', Helvetica, sans-serif;
 $base-font-weight: $font-weight-regular;
 $base-font-size: 16px;
 
+$line-height-base: 1.428571429 !default;
+$line-height-computed: floor(($base-font-size * $line-height-base)) !default;
+
 // font sizes
 $text-size-large: 18px;
 $text-size-small: 14px;
@@ -88,6 +91,12 @@ $color-grey-700: #606060;
 $color-grey-800: #505050;
 $color-grey-900: #404040;
 
+$body-bg: #fff;
+
+// table properties
+$table-cell-padding: 8px;
+$table-border-color: $color-grey-300;
+$table-condensed-cell-padding:  5px;
 
 // z-index order of importance
 $z-index-1: 10;
@@ -120,6 +129,7 @@ body, html {
   height: auto;
   margin: 0;
   padding: 0;
+  background-color: $body-bg;
   font-family: $base-font-family;
   font-weight: $base-font-weight;
   font-size: $base-font-size;

@@ -8,11 +8,10 @@ var mrApp = angular.module('missionReturnApp', [
         $locationProvider.html5Mode(true);
         RestangularProvider.setBaseUrl('/api/')
             
-            /* view request values
+
             .addFullRequestInterceptor(function(headers, params, element, httpConfig) {
                 console.log(headers, params, element, httpConfig);
             })
-            */
 
         $urlRouterProvider.otherwise('/');
         

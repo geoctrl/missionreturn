@@ -18,11 +18,11 @@ header.header-main {
 header.header-app {
   @extend header.header-main;
   
-  background-color: $color-primary-500;
+  background-color: #fff;
   
   .header-logo {
     svg {
-      //fill: $color-primary-500;
+      fill: $color-primary-500;
     }
   }
 }
