@@ -47,7 +47,7 @@ router
         res.send('hey hey hey')
         
     })
-    .post('/signup', function(req, res) {
+    .post('/people', function(req, res) {
         Person.findOne({
             email: req.params.email,
             password: req.params.password

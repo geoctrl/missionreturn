@@ -1,6 +1,7 @@
 var mrApp = angular.module('missionReturnApp', [
     'restangular',
-    'ui.router'
+    'ui.router',
+    'angular-jwt'
 ])
 
     .config(function(RestangularProvider, $urlRouterProvider, $locationProvider) {

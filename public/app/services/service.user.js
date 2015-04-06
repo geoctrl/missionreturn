@@ -3,9 +3,18 @@ mrApp.factory('UserService', function(Restangular) {
     
     return {
         
-        getUser: function(userUri) {
-
-            return user = Restangular.one('people', userUri).get().$object;
+        getUser: function(uri) {
+            // api/people/:uri
+            return user = Restangular.one('people', uri).get().$object;
+        },
+        
+        createUser: function(email, password) {
+            Restangular.all('people').post({})
+            
+        },
+        
+        loginUser: function(token) {
+            
         }
     }
 });

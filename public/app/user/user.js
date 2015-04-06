@@ -11,4 +11,8 @@ mrApp.config(function($stateProvider) {
         
         $scope.user = UserService.getUser('john-doe');
         
+        $scope.createUser = function() {
+            UserService.createUser();
+        }
+        
     });
