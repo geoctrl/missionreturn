@@ -1,22 +1,32 @@
 var express = require('express');
 var jwt = require('jsonwebtoken');
 var app = express();
+var api = express();
 var router = express.Router();
 var mongoose = require('mongoose');
+var cors = require('cors');
+
+// connect to mongo db
 mongoose.connect('mongodb://localhost/missionreturn');
 
+// use cors
+api.use(cors());
+
+// uncaught exception
 process.on('uncaughtException', function(err) {
     console.log(err);
 });
 
+// set secret
 process.env.JWT_SECRET = 'secret';
 
 // api root
-app.use('/api', router);
+api.use('/api', router);
 
 // Person model
 require('./../models/people');
 
+// check 
 function ensureAuth(req, res, next) {
     var bearerToken;
     var bearerHeader = req.headers["auth"];
@@ -61,7 +71,7 @@ router
                 if (person) {
                     res.json({
                         type: false,
-                        data: "Error Occurred: User already Exists!"
+                        data: req.params.email + ' - ' + req.params.password
                     })
                 } else {
                     var personModel = new Person();
@@ -78,7 +88,7 @@ router
         
     })
     
-    .get('/people/:uri', ensureAuth, function(req, res) {
+    .get('/people/:uri', function(req, res) {
         
         Person.findOne({'uri': req.params.uri}, function(err, person) {
             if (err) {
@@ -103,10 +113,14 @@ app.route('/*').all(function(req, res, next) {
 
 app.use(router);
 
+var apiServer = api.listen(5556, function() {
+    console.log('api server listening at http://localhost:5556');
+});
+
 var server = app.listen(5555, function() {
 
     var host = server.address().address;
     var port = server.address().port;
 
-    console.log('example app listening at http://%s:%s', host, port);
+    console.log('server listening at http://localhost:5555');
 });

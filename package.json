@@ -12,6 +12,7 @@
     "matchdep": "^0.3.0"
   },
   "dependencies": {
+    "cors": "^2.5.3",
     "express": "^4.12.3",
     "express-livereload": "0.0.24",
     "jsonwebtoken": "^4.2.2",
