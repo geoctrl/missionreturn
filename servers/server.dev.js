@@ -59,24 +59,23 @@ router
     })
     .post('/people', function(req, res) {
         Person.findOne({
-            email: req.params.email,
-            password: req.params.password
-        }, function(err, person) {
+            email: req.query.email,
+            password: req.query.password
+        }, function(err, doc) {
             if (err) {
                 res.json({
-                    type: false,
                     data: "Error Occurred: " + err
                 })
             } else {
-                if (person) {
+                if (doc) {
                     res.json({
                         type: false,
-                        data: req.params.email + ' - ' + req.params.password
+                        data: 'user already exists'
                     })
                 } else {
                     var personModel = new Person();
-                    personModel.email = req.params.email;
-                    personModel.password = req.params.password;
+                    personModel.email = req.query.email;
+                    personModel.password = req.query.password;
                     personModel.save(function(err, person) {
                         person.token = jwt.sign(person, process.env.JWT_SECRET)
                     })
@@ -86,6 +85,12 @@ router
             }
         });
         
+    })
+    
+    .get('/people', function(req, res) {
+        Person.find(function(err, doc) {
+            res.json(doc);
+        })
     })
     
     .get('/people/:uri', function(req, res) {
