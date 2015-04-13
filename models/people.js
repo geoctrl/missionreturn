@@ -5,7 +5,7 @@ PersonSchema = new Schema({
     name: String,
     token: String,
     email: String,
-    password: String,
+    password: {type: String, select: false},
     gender: String,
     img_profile: String,
     img_background: String,

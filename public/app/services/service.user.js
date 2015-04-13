@@ -9,11 +9,11 @@ mrApp.factory('UserService', function(Restangular) {
         },
         
         createUser: function(email, password) {
-            Restangular.all('people').post({})
-            
+            var hash = CryptoJS.SHA3(password, {outputLength: 512});
+            return Restangular.all('people').post('person', {email: email, password: hash.toString(CryptoJS.enc.Base64)});
         },
         
-        loginUser: function(token) {
+        authenticateUser: function(token) {
             
         }
     }

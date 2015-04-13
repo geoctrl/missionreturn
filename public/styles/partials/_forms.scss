@@ -1,10 +1,14 @@
+
+
 input[type="text"], input[type="email"], input[type="tel"], input[type="search"], select, textarea {
   margin: 0;
-  height: 32px;
-  padding: 0 10px;
-  border-radius: 3px;
-  border: solid 1px $color-grey-200;
-  background: #fff;
+  height: $button-height;
+  line-height: 20px;
+  padding: 5px 10px;
+  border-radius: $button-border-radius;
+  border: solid 2px transparent;
+  background-color: rgba($color-grey-100, .3);
+  background-image: none;
   font-family: $base-font-family;
   font-size: 14px;
   -webkit-transition: background 200ms ease, border 200ms ease;
@@ -17,13 +21,55 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="search"]
   @include box-shadow-none();
 
   &:focus, &:active {
-    border-color: $color-primary-500;
+    border-color: $color-accent-500;
     outline: none;
+  }
+
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    background-color: $color-grey-500;
+    opacity: 1;
+  }
+
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
+}
+
+.form-group {
+  margin-bottom: 14px;
+  
+  span.error {
+    font-size: 12px;
+    font-weight: 700;
+    color: $color-grey-500;
+    text-transform: uppercase;
+  }
+}
+
+
+label {
+  font-weight: $font-weight-bold;
+  font-size: 12px;
+  display: block;
+  padding: 4px 0;
+  color: $color-grey-500;
+  text-transform: uppercase;
+
+  .error {
+    color: $color-error-500;
   }
 }
 
 textarea {
-  min-height: 120px;
-  padding: 10px;
   max-width: 100%;
-} 
+  resize: none;
+}

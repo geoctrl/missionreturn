@@ -1,0 +1,26 @@
+<div class="container">
+    <form name="signupForm" ng-submit="userSignup();" class="signup-form" novalidate>
+        <div style="text-align: center;">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px" viewBox="99 -4 32 32" enable-background="new 99 -4 32 32" xml:space="preserve">
+                <path d="M128.2,6.8c-1.4-1.4-3.2-2.1-5.2-2.1c-1.5,0-3,0.5-4.2,1.3l-8.9,8.8c-0.8,0.8-1.8,1.2-2.8,1.2c-1.1,0-2.1-0.4-2.8-1.2 c-0.8-0.8-1.2-1.8-1.2-2.8s0.4-2.1,1.2-2.8c0.8-0.8,1.8-1.2,2.8-1.2c1,0,2.6,0.9,3.4,1.7l0.1,0.1c0.6,0.6,1.7,0.6,2.3,0 c0.6-0.6,0.6-1.7,0-2.3l0,0c-1.4-1.4-3.8-2.7-5.8-2.7c-2,0-3.8,0.8-5.2,2.1c-1.4,1.4-2.1,3.2-2.1,5.2c0,2,0.8,3.8,2.1,5.2 c1.4,1.4,3.2,2.1,5.2,2.1c2,0,3.8-0.8,5.2-2.1l7.9-7.9l0.1-0.1c0.8-0.8,1.8-1.2,2.8-1.2s2.1,0.4,2.8,1.2c0.8,0.8,1.2,1.8,1.2,2.8 s-0.4,2.1-1.2,2.8c-0.8,0.8-1.8,1.2-2.8,1.2s-2.1-0.4-2.8-1.2l-0.6-0.6c-0.6-0.6-1.7-0.6-2.3,0c-0.6,0.6-0.6,1.7,0,2.4l0.8,0.8 l0.3,0.3h0c1.3,1.1,3,1.8,4.8,1.8c2,0,3.8-0.8,5.2-2.1c1.4-1.4,2.1-3.2,2.1-5.2C130.3,10,129.5,8.2,128.2,6.8z"></path>
+            </svg>
+        </div>
+        <h4 class="text-center color-primary">
+            SIGN UP
+        </h4>
+        <div class="form-group">
+            <input class="form-control" name="email" type="text" placeholder="Email" required ng-model="user.email">
+            <span class="error" ng-hide="!signupForm.email.$error.required || signupForm.email.$pristine">Email is Required</span>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" type="text" placeholder="Password" required ng-model="user.password">
+            <span class="error" ng-hide="!signupForm.password.$error.required || signupForm.password.$pristine">8 Character Password is Required</span>
+            <span class="error" ng-show="!signupForm.password.$error.required && user.password.length < 8">8 Characters Required</span>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>

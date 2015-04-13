@@ -7,6 +7,9 @@ mrApp.config(function($stateProvider) {
         })
 })
 
-    .controller('homeCtrl', function($scope, Restangular) {
-        console.log('test yo')
+    .controller('homeCtrl', function($scope, UserService) {
+        
+        $scope.createUser = function() {
+            UserService.createUser('tonylefler@gmail.com', '12345678');
+        }
     });
