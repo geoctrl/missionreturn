@@ -5,11 +5,16 @@ var api = express();
 var router = express.Router();
 var mongoose = require('mongoose');
 var cors = require('cors');
+var mailer = require('./mailer');
+var crypto = require('crypto');
 
-// connect to mongo db
+
+// connect to mongo db and add models
 mongoose.connect('mongodb://localhost/missionreturn');
+require('./../models/people');
 
-// use cors
+// api setup
+api.use('/api', router);
 api.use(cors());
 
 // uncaught exception
@@ -20,11 +25,12 @@ process.on('uncaughtException', function(err) {
 // set secret
 process.env.JWT_SECRET = 'secret';
 
-// api root
-api.use('/api', router);
-
-// Person model
-require('./../models/people');
+function encryptData(text) {
+    var cipher = crypto.createCipher('aes-256-ctr', text);
+    var crypted = cipher.update(process.env.JWT_SECRET, 'utf89', 'hex');
+    crypted += cipher.final('hex');
+    return crypted;
+}
 
 // check 
 function ensureAuth(req, res, next) {
@@ -34,7 +40,7 @@ function ensureAuth(req, res, next) {
         var bearer = bearerHeader.split(" ");
         bearerToken = bearer[1];
         req.token = bearerToken;
-        next();
+        next(); 
     } else {
         res.json({'err': 403});
     }
@@ -58,7 +64,6 @@ router
         
     })
     .post('/people', function(req, res) {
-        console.log(req.body)
         Person.findOne({
             email: req.query.email,
             password: req.query.password
@@ -67,24 +72,33 @@ router
                 res.send("Error Occurred: " + err)
             } else {
                 if (doc) {
-                    console.log('user already exists')
                     res.status(200);
-                    res.send('user already exits')
+                    res.json({
+                        error: 'user already exits'
+                    })
                 } else {
                     var personModel = new Person();
                     personModel.email = req.query.email;
                     personModel.password = req.query.password;
+                    console.log(req.query.password, personModel.password);
                     personModel.save(function(err, person) {
-                        person.token = jwt.sign(person, process.env.JWT_SECRET)
-                    })
+                        person.token = jwt.sign({
+                            email: personModel.email
+                        }, process.env.JWT_SECRET);
+                        
+                        res.status(200);
+                        res.json({token: person.token});
+
+                        // send auth email
+                        //mailer.mailer.createUser(personModel.email);
+                    });
                 }
-                var token  = jwt.sign({foo: 'bar'}, 'shhh');
             }
         });
         
     })
     
-    .get('/people', function(req, res) {
+    .get('/people', '+password', function(req, res) {
         Person.find(function(err, doc) {
             if (err) {
                 console.log(err);
