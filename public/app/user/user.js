@@ -9,7 +9,7 @@ mrApp.config(function($stateProvider) {
 
     .controller('userCtrl', function($scope, UserService) {
         
-        $scope.user = UserService.getUser('john-doe');
+        $scope.user = UserService.getUser();
         
         $scope.createUser = function() {
             UserService.createUser();

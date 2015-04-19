@@ -13,7 +13,7 @@ var mandrill = require('mandrill-api/mandrill')
     };
 
 var mailer = {
-    createUser: function(email) {
+    authorizeAccount: function(email) {
 
         var message = {
             "html": templates.authorizeAccount,

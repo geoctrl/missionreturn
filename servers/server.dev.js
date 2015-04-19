@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 var mailer = require('./mailer');
 var crypto = require('crypto');
+var _ = require('underscore');
 
 
 // connect to mongo db and add models
@@ -15,7 +16,7 @@ require('./../models/people');
 
 // api setup
 api.use('/api', router);
-api.use(cors());
+router.use(cors());
 
 // uncaught exception
 process.on('uncaughtException', function(err) {
@@ -27,7 +28,7 @@ process.env.JWT_SECRET = 'secret';
 
 function encryptData(text) {
     var cipher = crypto.createCipher('aes-256-ctr', text);
-    var crypted = cipher.update(process.env.JWT_SECRET, 'utf89', 'hex');
+    var crypted = cipher.update(process.env.JWT_SECRET, 'utf8', 'hex');
     crypted += cipher.final('hex');
     return crypted;
 }
@@ -69,7 +70,7 @@ router
             password: req.query.password
         }, function(err, doc) {
             if (err) {
-                res.send("Error Occurred: " + err)
+                res.json({error: "Error Occurred: " + err})
             } else {
                 if (doc) {
                     res.status(200);
@@ -79,18 +80,15 @@ router
                 } else {
                     var personModel = new Person();
                     personModel.email = req.query.email;
-                    personModel.password = req.query.password;
-                    console.log(req.query.password, personModel.password);
+                    personModel.password = encryptData(req.query.password);
+                    personModel.token = jwt.sign({email: personModel.email}, process.env.JWT_SECRET);
+                    
                     personModel.save(function(err, person) {
-                        person.token = jwt.sign({
-                            email: personModel.email
-                        }, process.env.JWT_SECRET);
-                        
                         res.status(200);
-                        res.json({token: person.token});
+                        res.json(person);
 
                         // send auth email
-                        //mailer.mailer.createUser(personModel.email);
+                        //mailer.mailer.authorizeAccount(personModel.email);
                     });
                 }
             }
@@ -98,26 +96,57 @@ router
         
     })
     
-    .get('/people', '+password', function(req, res) {
-        Person.find(function(err, doc) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.json(doc);
-            }
-        })
-    })
-    
-    .get('/people/:uri', function(req, res) {
-        Person.findOne({'uri': req.params.uri}, function(err, doc) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.json(doc);
-            }
-        });
+    // does not require token auth
+    // needs to be accessible to general public
+    .get('/people', function(req, res) {
+        var requestParams = {};
+        if (req.query.email) {
+            requestParams.email = req.query.email;
+        }
+        if (req.query.uri) {
+            requestParams.uri = req.query.uri;
+        }
+        
+        if (req.headers.token && !_.size(requestParams)) {
+            Person.find({token: req.headers.token} ,function(err, doc) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    if (doc) {
+                        res.status(200);
+                        res.json(doc);
+                    } else {
+                        res.status(404);
+                        res.json({
+                            error: "User doesn't exist"
+                        });
+                    }
+                }
+            })
+        } else if (_.size(requestParams)) {
+            Person.findOne(requestParams, function(err, doc) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    if (doc) {
+                        res.status(200);
+                        res.json(doc);
+                    } else {
+                        res.status(404);
+                        res.json({
+                            error: "User doesn't exist"
+                        });
+                    }
+                }
+            });
+        } else {
+            res.status(400);
+            res.json({
+                error: 'invalid request'
+            })
+        }
     });
-
+    
 //router.get('/api/')
 
 
