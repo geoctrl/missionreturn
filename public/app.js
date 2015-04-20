@@ -5,25 +5,31 @@ var mrApp = angular.module('missionReturnApp', [
     'LocalStorageModule'
 ])
 
-    .config(function(RestangularProvider, $urlRouterProvider, $locationProvider, TokenService) {
-        
+    .constant('AUTH_EVENTS', {
+        loginSuccess: 'auth-login-success',
+        loginFailed: 'auth-login-failed',
+        logoutSuccess: 'auth-logout-success',
+        sessionTimeout: 'auth-session-timeout',
+        notAuthenticated: 'auth-not-authenticated',
+        notAuthorized: 'auth-not-authorized'
+    })
+
+    .config(function(RestangularProvider, $urlRouterProvider, $locationProvider, TokenProvider) {
+
         $locationProvider.html5Mode(true);
         RestangularProvider.setBaseUrl('http://localhost:5556/api/')
             .setFullRequestInterceptor(function(element, operation, route, url, headers, params, httpConfig) {
-                if (TokenService.getToken()) {
-                    headers.token = TokenService.getToken();
-                    return {
-                        element: element,
-                        params: params,
-                        headers: headers,
-                        httpConfig: httpConfig
-                    };
-                } else {
-                    
-                }
+                headers.token = TokenProvider.$get().token;
+
+                return {
+                    element: element,
+                    params: params,
+                    headers: headers,
+                    httpConfig: httpConfig
+                };
             });
         $urlRouterProvider.otherwise('/');
-        
+
     })
 
     .controller('MainCtrl', function($scope, Restangular) {

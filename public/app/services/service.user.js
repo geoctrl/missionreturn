@@ -2,13 +2,18 @@ mrApp.factory('UserService', function(Restangular) {
 
     return {
         
+        userState: '0',
+        
         getUser: function() {
             return Restangular.one('people').get().$object;
         },
         
         createUser: function(email, password) {
-            var hash = CryptoJS.SHA3(password, {outputLength: 512});
-            var promise = Restangular.all('people').post('person', {email: email, password: hash.toString(CryptoJS.enc.Base64)});
+            var self = this;
+            var promise = Restangular.all('people').post('person', {
+                email: email,
+                password: self.passwordHash(password)
+            });
             
             promise.then(function(data) {
                 if (data.error) {
@@ -21,6 +26,13 @@ mrApp.factory('UserService', function(Restangular) {
         
         authenticateUser: function(token) {
             
+        },
+        
+        
+        // helper functions
+        passwordHash: function(string) {
+            return CryptoJS.SHA3(string, {outputLength: 512}).toString(CryptoJS.enc.Base64);
         }
-   }
+
+    }
 });
