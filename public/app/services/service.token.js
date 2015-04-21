@@ -1,18 +1,16 @@
-mrApp.provider('Token', function() {
-
-    var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRvbnlsZWZsLmVyQGdtYWlsLmNvbSIsImlhdCI6MTQyOTM2NDg2M30.fCsgsv29mv_Q9AOWIKRoD_NXafboCH2VnGctGA9MrpE';
-
+mrApp.service('TokenService', function(Restangular, localStorageService, appConstants) {
+    
+    
     return {
-        setToken: function (value) {
-            token = value;
+        getToken: function() {
+            return localStorageService.get(appConstants.token);
         },
-        getTokentime: function() {
-            
+        setToken: function(token) {
+            this.clearToken();
+            return localStorageService.set(appConstants.token, token);
         },
-        $get: function () {
-            return {
-                token: token
-            };
+        clearToken: function() {
+            return localStorageService.remove(appConstants.token);
         }
-    };
+    }
 });

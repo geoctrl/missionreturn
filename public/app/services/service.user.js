@@ -1,8 +1,6 @@
-mrApp.factory('UserService', function(Restangular) {
+mrApp.service('UserService', function(Restangular) {
 
     return {
-        
-        userState: '0',
         
         getUser: function() {
             return Restangular.one('people').get().$object;

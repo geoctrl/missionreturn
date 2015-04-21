@@ -35,15 +35,13 @@ function encryptData(text) {
 
 // check 
 function ensureAuth(req, res, next) {
-    var bearerToken;
-    var bearerHeader = req.headers["auth"];
-    if (typeof bearerHeader !== 'undefined') {
-        var bearer = bearerHeader.split(" ");
-        bearerToken = bearer[1];
-        req.token = bearerToken;
+    var token = req.headers.token;
+    if (token.length && token!==undefined) {
+        req.token = token;
         next(); 
     } else {
-        res.json({'err': 403});
+        res.status(401);
+        res.json({'error': 'not-authorized'});
     }
 }
 
@@ -108,7 +106,7 @@ router
         }
         
         if (req.headers.token && !_.size(requestParams)) {
-            Person.find({token: req.headers.token} ,function(err, doc) {
+            Person.findOne({token: req.headers.token} ,function(err, doc) {
                 if (err) {
                     console.log(err);
                 } else {

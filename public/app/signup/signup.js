@@ -13,9 +13,7 @@ mrApp.config(function($stateProvider) {
         $scope.signupForm = {};
         $scope.userSignup = function() {
             if (!$scope.signupForm.$invalid) {
-                UserService.createUser($scope.user.email, $scope.user.password).then(function(data) {
-                    console.log(data)
-                });
+                UserService.createUser($scope.user.email, $scope.user.password);
             } else {
                 $scope.signupForm.email.$pristine = false;
                 $scope.signupForm.password.$pristine = false;
