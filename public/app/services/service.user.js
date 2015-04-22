@@ -1,4 +1,4 @@
-mrApp.service('UserService', function(Restangular) {
+mrApp.service('UserService', function(Restangular, TokenService, $state) {
 
     return {
         
@@ -17,15 +17,19 @@ mrApp.service('UserService', function(Restangular) {
                 if (data.error) {
                     return data.error;
                 } else {
-                    user.authenticateUser(data.token);
+                    if (data.token) {
+                        user.authenticateUser(data.token);
+                    } else {
+                        return {error: 'something is amiss...no token'}
+                    }
                 }
             });
         },
-        
+
         authenticateUser: function(token) {
-            
+            TokenService.setToken(token);
+            $state.go(user);
         },
-        
         
         // helper functions
         passwordHash: function(string) {
