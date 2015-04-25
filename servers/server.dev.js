@@ -79,7 +79,9 @@ router
                     var personModel = new Person();
                     personModel.email = req.query.email;
                     personModel.password = encryptData(req.query.password);
-                    personModel.token = jwt.sign({email: personModel.email}, process.env.JWT_SECRET);
+                    personModel.token = jwt.sign({email: personModel.email}, process.env.JWT_SECRET, {
+                        expiresInMinutes: 1440
+                    });
                     
                     personModel.save(function(err, person) {
                         res.status(200);
@@ -143,9 +145,23 @@ router
                 error: 'invalid request'
             })
         }
+    })
+    .get('/token', function(req, res) {
+        Person.findOne({token: req.headers.token}, function(err, doc) {
+            if (err) {
+                console.log(err);
+            } else {
+                if (doc) {
+
+                } else {
+                    res.status(404);
+                    res.json({
+                        error: "Token doesn't exist"
+                    });
+                }
+            }
+        })
     });
-    
-//router.get('/api/')
 
 
 /**

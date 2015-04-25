@@ -6,7 +6,8 @@ var mrApp = angular.module('missionReturnApp', [
 ])
 
     .constant('appConstants', {
-        token: 'token'
+        logOut: 'user-logged-in',
+        logIn: 'user-log-out'
     })
 
     .config(function(RestangularProvider, $urlRouterProvider, $locationProvider) {

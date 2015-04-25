@@ -1,4 +1,5 @@
-mrApp.service('UserService', function(Restangular, TokenService, $state) {
+mrApp.service('UserService', function(
+    Restangular, TokenService, appConstants, $state, localStorageService) {
 
     return {
         
@@ -18,7 +19,8 @@ mrApp.service('UserService', function(Restangular, TokenService, $state) {
                     return data.error;
                 } else {
                     if (data.token) {
-                        user.authenticateUser(data.token);
+                        TokenService.setToken(data.token);
+                        user.authenticateUser();
                     } else {
                         return {error: 'something is amiss...no token'}
                     }
@@ -26,9 +28,13 @@ mrApp.service('UserService', function(Restangular, TokenService, $state) {
             });
         },
 
-        authenticateUser: function(token) {
-            TokenService.setToken(token);
-            $state.go(user);
+        authenticateUser: function() {
+            if (TokenService.getToken()) {
+                localStorageService.set('userStatus', appConstants.logIn);
+                $state.go(user);
+            } else {
+                $state.go('login')
+            }
         },
         
         // helper functions

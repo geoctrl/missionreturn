@@ -13,7 +13,7 @@
             <span class="error" ng-hide="!signupForm.email.$error.required || signupForm.email.$pristine">Email is Required</span>
         </div>
         <div class="form-group">
-            <input class="form-control" name="password" type="text" placeholder="Password" required ng-model="user.password">
+            <input class="form-control" name="password" type="password" placeholder="Password" required ng-model="user.password">
             <span class="error" ng-hide="!signupForm.password.$error.required || signupForm.password.$pristine">8 Character Password is Required</span>
             <span class="error" ng-show="!signupForm.password.$error.required && user.password.length < 8">8 Characters Required</span>
         </div>
