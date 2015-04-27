@@ -33,6 +33,12 @@ function encryptData(text) {
     return crypted;
 }
 
+function createToken(email) {
+    return jwt.sign({email: email}, process.env.JWT_SECRET, {
+        expiresInMinutes: 1440
+    })
+}
+
 // check 
 function ensureAuth(req, res, next) {
     var token = req.headers.token;
@@ -47,26 +53,32 @@ function ensureAuth(req, res, next) {
 
 router
     .post('/login', function(req, res) {
-        Person.findOne({'token': req.params.token}, function(err, person) {
+        Person.findOne({
+            email: req.query.email,
+            password: encryptData(req.query.password)
+        }, function(err, doc) {
             if (err) {
-                
+                res.status(500);
+                res.json({error: "Error Occurred: " + err});
             } else {
-                if (!person) {
-                    
+                if (doc) {
+                    doc.token = createToken(req.query.email);
+                    doc.save();
+                    res.status(200);
+                    res.json(doc);
                 } else {
-                    
+                    res.status(404);
+                    res.json({error: "Invalid Login Credentials"})
                 }
             }
         });
-        
-        res.send('hey hey hey')
-        
     })
     .post('/people', function(req, res) {
         Person.findOne({
             email: req.query.email
         }, function(err, doc) {
             if (err) {
+                res.status(500);
                 res.json({error: "Error Occurred: " + err})
             } else {
                 if (doc) {
@@ -78,9 +90,7 @@ router
                     var personModel = new Person();
                     personModel.email = req.query.email;
                     personModel.password = encryptData(req.query.password);
-                    personModel.token = jwt.sign({email: personModel.email}, process.env.JWT_SECRET, {
-                        expiresInMinutes: 1440
-                    });
+                    personModel.token = createToken(personModel.email);
                     
                     personModel.save(function(err, person) {
                         res.status(200);
@@ -108,9 +118,9 @@ router
         
         if (req.headers.token && !_.size(requestParams)) {
             Person.findOne({token: req.headers.token} ,function(err, doc) {
-                console.log('here')
                 if (err) {
-                    console.log(err);
+                    res.status(500);
+                    res.json({error: "Error Occurred: " + err})                    
                 } else {
                     if (doc) {
                         res.status(200);
@@ -126,7 +136,8 @@ router
         } else if (_.size(requestParams)) {
             Person.findOne(requestParams, function(err, doc) {
                 if (err) {
-                    console.log(err);
+                    res.status(500);
+                    res.json({error: "Error Occurred: " + err})
                 } else {
                     if (doc) {
                         res.status(200);
@@ -149,7 +160,8 @@ router
     .get('/token', function(req, res) {
         Person.findOne({token: req.headers.token}, function(err, doc) {
             if (err) {
-                console.log(err);
+                res.status(500);
+                res.json({error: "Error Occurred: " + err})
             } else {
                 if (doc) {
 

@@ -8,12 +8,10 @@ mrApp.service('UserService', function(
         },
         
         createUser: function(email, password) {
-            var self = this;
-            
             return $q(function(resolve, reject) {
-                Restangular.all('people').post('person', {
+                Restangular.all('people').post('params', {
                     email: email,
-                    password: self.passwordHash(password)
+                    password: password
                 }).then(function(data) {
                     if (data.error) {
                         resolve(data);
@@ -22,11 +20,31 @@ mrApp.service('UserService', function(
                             TokenService.setToken(data.token);
                             $state.go('user');
                         } else {
-                            return {error: 'something is amiss...no token'}
+                            return {error: 'something is amiss...no token'};
                         }
                     }
                 });
             });
+        },
+        
+        loginUser: function(email, password) {
+            return $q(function(resolve, reject) {
+                Restangular.all('login').post('params', {
+                    email: email,
+                    password: password
+                }).then(function(data) {
+                    if (data.error) {
+                        resolve(data);
+                    } else {
+                        if (data.token) {
+                            TokenService.setToken(data.token);
+                            $state.go('user');
+                        } else {
+                            return {error: 'something is amiss...no token'};
+                        }
+                    }
+                })
+            })
         },
         
         isAuthenticated: function() {
@@ -40,11 +58,6 @@ mrApp.service('UserService', function(
             } else {
                 return false;
             }
-        },
-        
-        // helper functions
-        passwordHash: function(string) {
-            return CryptoJS.SHA3(string, {outputLength: 512}).toString(CryptoJS.enc.Base64);
         }
 
     }
