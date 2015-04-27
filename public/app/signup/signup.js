@@ -10,6 +10,7 @@ mrApp.config(function($stateProvider) {
     .controller('signupCtrl', function($scope, UserService, $state) {
 
         $scope.userSignup = function() {
+            $scope.userError = false;
             if (!$scope.signupForm.$invalid) {
                 UserService.createUser(
                     $scope.user.email,

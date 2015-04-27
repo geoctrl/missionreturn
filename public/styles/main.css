@@ -1059,7 +1059,7 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="search"]
   line-height: 20px;
   padding: 5px 10px;
   border-radius: 3px;
-  border: solid 2px transparent;
+  border: solid 2px rgba(211, 211, 211, 0.3);
   background-color: rgba(211, 211, 211, 0.3);
   background-image: none;
   font-family: "Glober", Helvetica, sans-serif;
@@ -1263,9 +1263,8 @@ header.header-app {
 .alert {
   padding: 10px;
   border-radius: 3px;
-  border: solid 2px #f7bd00;
-  background-color: #ffd95e;
-  color: #c49600;
+  background-color: #fff1c4;
+  color: #dea900;
   font-weight: 700;
   margin-bottom: 10px; }
 

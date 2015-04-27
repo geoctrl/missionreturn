@@ -1,12 +1,10 @@
-
-
 input[type="text"], input[type="email"], input[type="tel"], input[type="search"], input[type="password"],  select, textarea {
   margin: 0;
   height: $button-height;
   line-height: 20px;
   padding: 5px 10px;
   border-radius: $button-border-radius;
-  border: solid 2px transparent;
+  border: solid 2px rgba($color-grey-100, .3);
   background-color: rgba($color-grey-100, .3);
   background-image: none;
   font-family: $base-font-family;
