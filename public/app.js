@@ -7,7 +7,8 @@ var mrApp = angular.module('missionReturnApp', [
 
     .constant('appConstants', {
         logOut: 'user-logged-in',
-        logIn: 'user-log-out'
+        logIn: 'user-log-out',
+        skipAuth: ['signup', 'login']
     })
 
     .config(function(RestangularProvider, $urlRouterProvider, $locationProvider) {
@@ -15,13 +16,15 @@ var mrApp = angular.module('missionReturnApp', [
         $locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise('/');
         RestangularProvider.setBaseUrl('http://localhost:5556/api/');
-
     })
     
-    .run(function($rootScope, $state, localStorageService, TokenService, appConstants) {
-        
+    .run(function($rootScope, $state, UserService, TokenService, jwtHelper, localStorageService, appConstants) {
         $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
-            console.log(TokenService.getToken());
+            if (toState.name.indexOf(appConstants.skipAuth) == -1) {
+                if (!UserService.isAuthenticated()) {
+                    $state.go('login', {error: 'not authorized'});
+                }
+            }
         })
     })
 

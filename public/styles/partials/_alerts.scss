@@ -1,0 +1,9 @@
+.alert {
+  padding: 10px;
+  border-radius: $button-border-radius;
+  border: solid 2px darken($color-accent-500, 20%);
+  background-color: $color-accent-500;
+  color: darken($color-accent-500, 30%);
+  font-weight: $font-weight-bold;
+  margin-bottom: 10px;
+}

@@ -6,10 +6,10 @@ mrApp.service('TokenService', function(Restangular, localStorageService, appCons
             return localStorageService.get(appConstants.token);
         },
         setToken: function(token) {
-            this.clearToken();
+            this.deleteToken();
             return localStorageService.set(appConstants.token, token);
         },
-        clearToken: function() {
+        deleteToken: function() {
             return localStorageService.remove(appConstants.token);
         }
     }

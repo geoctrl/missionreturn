@@ -64,8 +64,7 @@ router
     })
     .post('/people', function(req, res) {
         Person.findOne({
-            email: req.query.email,
-            password: req.query.password
+            email: req.query.email
         }, function(err, doc) {
             if (err) {
                 res.json({error: "Error Occurred: " + err})
@@ -73,7 +72,7 @@ router
                 if (doc) {
                     res.status(200);
                     res.json({
-                        error: 'user already exits'
+                        error: 'Email is already in use.'
                     })
                 } else {
                     var personModel = new Person();
@@ -88,7 +87,7 @@ router
                         res.json(person);
 
                         // send auth email
-                        //mailer.mailer.authorizeAccount(personModel.email);
+                        mailer.mailer.authorizeAccount(personModel.email);
                     });
                 }
             }
@@ -109,6 +108,7 @@ router
         
         if (req.headers.token && !_.size(requestParams)) {
             Person.findOne({token: req.headers.token} ,function(err, doc) {
+                console.log('here')
                 if (err) {
                     console.log(err);
                 } else {

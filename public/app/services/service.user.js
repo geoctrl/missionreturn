@@ -1,39 +1,44 @@
 mrApp.service('UserService', function(
-    Restangular, TokenService, appConstants, $state, localStorageService) {
+    Restangular, TokenService, appConstants, $state, $q, localStorageService, jwtHelper, TokenRestangular) {
 
     return {
         
         getUser: function() {
-            return Restangular.one('people').get().$object;
+            return TokenRestangular.one('people').get().$object;
         },
         
         createUser: function(email, password) {
             var self = this;
-            var promise = Restangular.all('people').post('person', {
-                email: email,
-                password: self.passwordHash(password)
-            });
             
-            promise.then(function(data) {
-                if (data.error) {
-                    return data.error;
-                } else {
-                    if (data.token) {
-                        TokenService.setToken(data.token);
-                        user.authenticateUser();
+            return $q(function(resolve, reject) {
+                Restangular.all('people').post('person', {
+                    email: email,
+                    password: self.passwordHash(password)
+                }).then(function(data) {
+                    if (data.error) {
+                        resolve(data);
                     } else {
-                        return {error: 'something is amiss...no token'}
+                        if (data.token) {
+                            TokenService.setToken(data.token);
+                            $state.go('user');
+                        } else {
+                            return {error: 'something is amiss...no token'}
+                        }
                     }
-                }
+                });
             });
         },
-
-        authenticateUser: function() {
+        
+        isAuthenticated: function() {
             if (TokenService.getToken()) {
-                localStorageService.set('userStatus', appConstants.logIn);
-                $state.go(user);
+                if (jwtHelper.isTokenExpired(TokenService.getToken())) {
+                    TokenService.deleteToken();
+                    return false;
+                } else {
+                    return true;
+                }
             } else {
-                $state.go('login')
+                return false;
             }
         },
         
