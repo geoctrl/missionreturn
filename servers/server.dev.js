@@ -52,7 +52,7 @@ function ensureAuth(req, res, next) {
 }
 
 router
-    .post('/login', function(req, res) {
+    .post('/user/login', function(req, res) {
         Person.findOne({
             email: req.query.email,
             password: encryptData(req.query.password)
@@ -67,12 +67,12 @@ router
                     res.status(200);
                     res.json(doc);
                 } else {
-                    res.status(404);
                     res.json({error: "Invalid Login Credentials"})
                 }
             }
         });
     })
+    .post('/use/authorize')
     .post('/people', function(req, res) {
         Person.findOne({
             email: req.query.email
@@ -88,16 +88,21 @@ router
                     })
                 } else {
                     var personModel = new Person();
+                    var authToken = crypto.randomBytes(16).toString('hex');
                     personModel.email = req.query.email;
                     personModel.password = encryptData(req.query.password);
                     personModel.token = createToken(personModel.email);
+                    personModel.authToken = authToken;
                     
                     personModel.save(function(err, person) {
                         res.status(200);
                         res.json(person);
 
                         // send auth email
-                        mailer.mailer.authorizeAccount(personModel.email);
+                        mailer.mailer.authorizeAccount(
+                            personModel.email,
+                            authToken
+                        );
                     });
                 }
             }

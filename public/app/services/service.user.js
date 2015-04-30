@@ -29,7 +29,7 @@ mrApp.service('UserService', function(
         
         loginUser: function(email, password) {
             return $q(function(resolve, reject) {
-                Restangular.all('login').post('params', {
+                Restangular.all('user/login').post('params', {
                     email: email,
                     password: password
                 }).then(function(data) {
@@ -44,6 +44,18 @@ mrApp.service('UserService', function(
                         }
                     }
                 })
+            })
+        },
+        
+        authorizeUser: function(authToken) {
+            return $q(function(resolve, reject) {
+                Restangular.all('user/authorize').post('params', {
+                    authToken: authToken
+                }).then(function(data) {
+                    if (data.error) {
+                        
+                    }
+                });
             })
         },
         

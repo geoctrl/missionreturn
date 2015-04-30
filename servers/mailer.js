@@ -5,18 +5,13 @@ var mandrill = require('mandrill-api/mandrill')
         fromName: 'Mission Return',
         fromEmail: 'no-reply@missionreturn.com',
         toType: 'to'
-    }
-    , templates = {
-        authorizeAccount: '<div>\n    <img src="logo.png">\n    <h2>Authorize your Account</h2>\n    <p>\n        Thank you for signing up for Mission Return.\n        Please authorize your account by following this link:\n    </p>\n    <a style="font-size: 1.2em; font-weight: 700;" href="http://missionreturn.com/superawesomelink">missionreturn.com/superawesomelink</a>\n    <br>\n    <h3>-The Mission Return Team</h3>\n</div>',
-        resetPassword: '',
-        deleteAccount: ''
     };
 
 var mailer = {
-    authorizeAccount: function(email) {
+    authorizeAccount: function(email, authToken) {
 
         var message = {
-            "html": templates.authorizeAccount,
+            "html": '<div>\n    <img src="logo.png">\n    <h2>Authorize your Account</h2>\n    <p>\n        Thank you for signing up for Mission Return.\n        Please authorize your account by following this link:\n    </p>\n    <a style="font-size: 1.2em; font-weight: 700;" href="http://localhost:5555/authorize/'+ authToken +'">missionreturn.com/authorize/'+ authToken +'</a>\n    <br>\n    <h3>-The Mission Return Team</h3>\n</div>',
             "text": "Authorize your Account",
             "subject": "example subject",
             "from_email": info.fromEmail,
