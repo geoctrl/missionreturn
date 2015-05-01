@@ -7,9 +7,5 @@ mrApp.config(function($stateProvider) {
 })
 
     .controller('authorizeCtrl', function($scope, $state, UserService) {
-        var promise = UserService.authorizeUser($state.params.authToken);
-        
-        promise.then(function(data) {
-            console.log('promise works')
-        });
+        UserService.authorizeUser($state.params.authToken);
     });

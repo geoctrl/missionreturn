@@ -72,7 +72,25 @@ router
             }
         });
     })
-    .post('/use/authorize')
+    .post('/user/authorize', function(req, res) {
+        Person.findOne({
+            authToken: req.query.authToken
+        }, function(err, doc) {
+            if (err) {
+                res.status(500);
+                res.json({error: "Error Occurred: " + err});
+            } else {
+                if (doc) {
+                    res.status(200);
+                    res.json(doc)
+                } else {
+                    res.json({
+                        error: 'Unable to authorize.'
+                    })
+                }
+            }
+        })
+    })
     .post('/people', function(req, res) {
         Person.findOne({
             email: req.query.email
@@ -82,7 +100,6 @@ router
                 res.json({error: "Error Occurred: " + err})
             } else {
                 if (doc) {
-                    res.status(200);
                     res.json({
                         error: 'Email is already in use.'
                     })
@@ -94,9 +111,9 @@ router
                     personModel.token = createToken(personModel.email);
                     personModel.authToken = authToken;
                     
-                    personModel.save(function(err, person) {
+                    personModel.save(function(err, doc) {
                         res.status(200);
-                        res.json(person);
+                        res.json(doc);
 
                         // send auth email
                         mailer.mailer.authorizeAccount(

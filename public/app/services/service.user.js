@@ -1,5 +1,5 @@
 mrApp.service('UserService', function(
-    Restangular, TokenService, appConstants, $state, $q, localStorageService, jwtHelper, TokenRestangular) {
+    Restangular, TokenService, appConstants, $state, $q, localStorageService, jwtHelper, TokenRestangular, errorConstants) {
 
     return {
         
@@ -20,7 +20,7 @@ mrApp.service('UserService', function(
                             TokenService.setToken(data.token);
                             $state.go('user');
                         } else {
-                            return {error: 'something is amiss...no token'};
+                            return {error: errorConstants.generateTokenFalse};
                         }
                     }
                 });
@@ -40,7 +40,7 @@ mrApp.service('UserService', function(
                             TokenService.setToken(data.token);
                             $state.go('user');
                         } else {
-                            return {error: 'something is amiss...no token'};
+                            return {error: errorConstants.generateTokenFalse};
                         }
                     }
                 })
@@ -54,6 +54,8 @@ mrApp.service('UserService', function(
                 }).then(function(data) {
                     if (data.error) {
                         
+                    } else {
+                        $state.go('user');
                     }
                 });
             })

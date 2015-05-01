@@ -1268,6 +1268,39 @@ header.header-app {
   font-weight: 700;
   margin-bottom: 10px; }
 
+.tl-notify-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px; }
+
+.tl-notify {
+  background-color: #404040;
+  color: #fff;
+  margin-top: 10px;
+  border-radius: 4px;
+  padding: 10px 40px 10px 14px;
+  position: relative; }
+  .tl-notify .tl-notify-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    border-radius: 3px;
+    padding: 0;
+    margin: 0;
+    color: #b3b3b3; }
+    .tl-notify .tl-notify-close:hover {
+      background-color: #f64747;
+      color: #fff; }
+    .tl-notify .tl-notify-close i {
+      font-size: 14px; }
+  .tl-notify .tl-notify-title {
+    font-weight: 700; }
+
 .hero-unit {
   background: url("/img/hero1.jpg") center no-repeat;
   background-size: cover;

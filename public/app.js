@@ -2,7 +2,8 @@ var mrApp = angular.module('missionReturnApp', [
     'restangular',
     'ui.router',
     'angular-jwt',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'tl.toaster-notify'
 ])
 
     .constant('appConstants', {
@@ -10,9 +11,12 @@ var mrApp = angular.module('missionReturnApp', [
         logIn: 'user-log-out',
         skipAuth: ['signup', 'login']
     })
+    
+    .constant('errorConstants', {
+        generateTokenFalse: 'Server was unable to generate a token. Please Contact an admin for support.'
+    })
 
     .config(function(RestangularProvider, $urlRouterProvider, $locationProvider) {
-
         $locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise('/');
         RestangularProvider.setBaseUrl('http://localhost:5556/api/');
@@ -20,13 +24,10 @@ var mrApp = angular.module('missionReturnApp', [
     
     .run(function($rootScope, $state, UserService, TokenService, jwtHelper, localStorageService, appConstants) {
         $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
-            if (toState.name.indexOf(appConstants.skipAuth) == -1) {
+            if (appConstants.skipAuth.indexOf(toState.name) == -1) {
                 if (!UserService.isAuthenticated()) {
                     $state.go('login', {error: 'not authorized'});
                 }
             }
         })
-    })
-
-    .controller('MainCtrl', function($scope, Restangular) {
     });
