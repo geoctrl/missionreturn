@@ -52,11 +52,8 @@ mrApp.service('UserService', function(
                 Restangular.all('user/authorize').post('params', {
                     authToken: authToken
                 }).then(function(data) {
-                    if (data.error) {
-                        
-                    } else {
-                        $state.go('user');
-                    }
+                    console.log(data);
+                    resolve(data);
                 });
             })
         },

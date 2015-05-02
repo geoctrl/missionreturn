@@ -3,11 +3,13 @@ mrApp.config(function($stateProvider) {
         .state('signup', {
             url: '/signup',
             templateUrl: '/app/signup/signup.html',
-            controller: 'signupCtrl'
+            controller: 'signupCtrl',
+            params: {flashMessage: null}
         })
 })
 
-    .controller('signupCtrl', function($scope, UserService, $state) {
+    .controller('signupCtrl', function($scope, UserService, $state, tlNotifyService) {
+        tlNotifyService.notify($state.params.flashMessage);
 
         $scope.userSignup = function() {
             $scope.userError = false;

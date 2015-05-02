@@ -7,5 +7,10 @@ mrApp.config(function($stateProvider) {
 })
 
     .controller('authorizeCtrl', function($scope, $state, UserService) {
-        UserService.authorizeUser($state.params.authToken);
+        var promise = UserService.authorizeUser($state.params.authToken);
+        promise.then(function(data) {
+            if (data.error) {
+                $state.go('login', {flashMessage: 'Error: Unable to Authorize'})
+            }
+        })
     });
