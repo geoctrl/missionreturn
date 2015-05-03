@@ -18,7 +18,11 @@ mrApp.config(function($stateProvider) {
                     $scope.user.email,
                     $scope.user.password
                 ).then(function(data) {
-                    $scope.userError = data.error;
+                        if (data.error) {
+                            tlNotifyService.notify(data.error);
+                        } else {
+                            $state.go('authorize');
+                        }
                 });
             } else {
                 $scope.signupForm.email.$pristine = false;

@@ -9,7 +9,7 @@ var mrApp = angular.module('missionReturnApp', [
     .constant('appConstants', {
         logOut: 'user-logged-in',
         logIn: 'user-log-out',
-        skipAuth: ['signup', 'login']
+        skipAuth: ['signup', 'login', 'authorize']
     })
     
     .constant('errorConstants', {
@@ -22,11 +22,13 @@ var mrApp = angular.module('missionReturnApp', [
         RestangularProvider.setBaseUrl('http://localhost:5556/api/');
     })
     
-    .run(function($rootScope, $state, UserService, TokenService, jwtHelper, localStorageService, appConstants) {
+    .run(function($rootScope, $state, UserService, appConstants, $timeout) {
         $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
             if (appConstants.skipAuth.indexOf(toState.name) == -1) {
                 if (!UserService.isAuthenticated()) {
-                    $state.go('login', {error: 'not authorized'});
+                    $timeout(function() {
+                        $state.go('login');
+                    })
                 }
             }
         })

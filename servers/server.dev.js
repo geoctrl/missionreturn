@@ -52,14 +52,14 @@ function ensureAuth(req, res, next) {
 }
 
 router
-    .post('/user/login', function(req, res) {
+    .post('/login', function(req, res) {
         Person.findOne({
             email: req.query.email,
             password: encryptData(req.query.password)
         }, function(err, doc) {
             if (err) {
                 res.status(500);
-                res.json({error: "Error Occurred: " + err});
+                res.json({error: err})
             } else {
                 if (doc) {
                     doc.token = createToken(req.query.email);
@@ -72,20 +72,20 @@ router
             }
         });
     })
-    .post('/user/authorize', function(req, res) {
+    .post('/authorize', function(req, res) {
         Person.findOne({
             authToken: req.query.authToken
         }, function(err, doc) {
             if (err) {
                 res.status(500);
-                res.json({error: "Error Occurred: " + err});
+                res.json({error: err})
             } else {
                 if (doc) {
                     res.status(200);
                     res.json(doc)
                 } else {
                     res.json({
-                        error: 'Unable to authorize.'
+                        error: 'Unable to authorize'
                     })
                 }
             }
@@ -97,11 +97,11 @@ router
         }, function(err, doc) {
             if (err) {
                 res.status(500);
-                res.json({error: "Error Occurred: " + err})
+                res.json({error: err})
             } else {
                 if (doc) {
                     res.json({
-                        error: 'Email is already in use.'
+                        error: 'Email is already in use'
                     })
                 } else {
                     var personModel = new Person();
@@ -142,7 +142,7 @@ router
             Person.findOne({token: req.headers.token} ,function(err, doc) {
                 if (err) {
                     res.status(500);
-                    res.json({error: "Error Occurred: " + err})                    
+                    res.json({error: err})                    
                 } else {
                     if (doc) {
                         res.status(200);
@@ -159,7 +159,7 @@ router
             Person.findOne(requestParams, function(err, doc) {
                 if (err) {
                     res.status(500);
-                    res.json({error: "Error Occurred: " + err})
+                    res.json({error: err})
                 } else {
                     if (doc) {
                         res.status(200);
@@ -183,7 +183,7 @@ router
         Person.findOne({token: req.headers.token}, function(err, doc) {
             if (err) {
                 res.status(500);
-                res.json({error: "Error Occurred: " + err})
+                res.json({error: err})
             } else {
                 if (doc) {
 
@@ -214,9 +214,5 @@ var apiServer = api.listen(5556, function() {
 });
 
 var server = app.listen(5555, function() {
-
-    var host = server.address().address;
-    var port = server.address().port;
-
     console.log('server listening at http://localhost:5555');
 });

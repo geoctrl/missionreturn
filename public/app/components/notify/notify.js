@@ -18,12 +18,16 @@ angular.module('tl.toaster-notify', [])
             addArrayElement: function(element) {
                 $timeout(function() {
                     Velocity(element, {
-                        scaleY: 1.2,
-                        scaleX: 1.2
+                        translateX: '-110%'
+                    }, {
+                        duration: 0
                     });
                     Velocity(element, {
-                        scaleY: 1,
-                        scaleX: 1
+                        translateX: 0
+                    }, {
+                        easing: 'easeIn',
+                        display: 'block'
+
                     });
                     notifyArray[notifyArray.length-1].element = element;
                 });
@@ -44,6 +48,9 @@ angular.module('tl.toaster-notify', [])
                     notification.title = options.title?options.title:false;
                     notification.type = options.type?options.type:defaultOptions.type;
                     notification.duration = options.duration>=0?options.duration:defaultOptions.duration;
+                    if (notification.title == 'Error' && !options.type) {
+                        notification.type = 'error';
+                    }
                 }
                 
                 notification.duration = notification.duration?notification.duration:defaultOptions.duration;
@@ -67,7 +74,7 @@ angular.module('tl.toaster-notify', [])
             animateOut: function(element) {
                 return $q(function(resolve) {
                     Velocity(element, {
-                        translateX: '-120%'
+                        translateX: '-110%'
                     }, {
                         complete: function () {
                             resolve();
@@ -107,7 +114,7 @@ angular.module('tl.toaster-notify', [])
             controller: function($scope, $element) {
                 $scope.notifyArray = tlNotifyService.getNotify();
             },
-            template: '<div class="tl-notify-container">\n    <div class="tl-notify tl-notify-id{{notification.id}}"\n         ng-repeat="notification in notifyArray"\n         ng-class="{\n     \'tl-notify-default\': notification.type==\'default\',\n     \'tl-notify-primary\': notification.type==\'primary\',\n     \'tl-notify-error\': notification.type==\'error\',\n     \'tl-notify-warning\': notification.type==\'warning\',\n     \'tl-notify-success\': notification.type==\'success\',}"\n         tl-notify-item>\n        <button class="tl-notify-close" ng-click="notifyClose(notification);">\n            <i class="gi gi-close"></i>\n        </button>\n        <div class="tl-notify-title" ng-show="notification.title">{{notification.title}}</div>\n        <div class="tl-notify-content">{{notification.content}}</div>\n    </div>\n</div>\n'
+            template: '<div class="tl-notify-container">\n    <div class="tl-notify tl-notify-{{notification.type}}"\n         ng-repeat="notification in notifyArray"\n         tl-notify-item>\n        <button class="tl-notify-close" ng-click="notifyClose(notification);">\n            <i class="gi gi-close"></i>\n        </button>\n        <div class="tl-notify-title" ng-show="notification.title">{{notification.title}}</div>\n        <div class="tl-notify-content">{{notification.content}}</div>\n    </div>\n</div>\n'
         }
     })
 

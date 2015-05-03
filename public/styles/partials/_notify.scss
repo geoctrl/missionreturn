@@ -2,6 +2,7 @@
   position: fixed;
   bottom: 20px;
   left: 20px;
+  z-index: $z-index-5;
 }
 
 .tl-notify {
@@ -11,6 +12,7 @@
   border-radius: 4px;
   padding: 10px 40px 10px 14px;
   position: relative;
+  display: none;
   
   .tl-notify-close {
     position: absolute;
@@ -24,7 +26,7 @@
     border-radius: 3px;
     padding: 0;
     margin: 0;
-    color: darken(#fff, 30%);
+    color: rgba(#fff, .5);
     
     &:hover {
       background-color: $color-primary-500;
@@ -40,7 +42,7 @@
     font-weight: 700;
   }
   
-  &.tl-notify-default {
-    
+  &.tl-notify-error {
+    background-color: $color-error-500;
   }
 }

@@ -4,7 +4,7 @@ mrApp.service('UserService', function(
     return {
         
         getUser: function() {
-            return TokenRestangular.one('people').get().$object;
+            return TokenRestangular.one('people').get();
         },
         
         createUser: function(email, password) {
@@ -13,46 +13,34 @@ mrApp.service('UserService', function(
                     email: email,
                     password: password
                 }).then(function(data) {
-                    if (data.error) {
-                        resolve(data);
-                    } else {
-                        if (data.token) {
-                            TokenService.setToken(data.token);
-                            $state.go('user');
-                        } else {
-                            return {error: errorConstants.generateTokenFalse};
-                        }
-                    }
+                    resolve(data);
+
                 });
             });
         },
         
         loginUser: function(email, password) {
             return $q(function(resolve, reject) {
-                Restangular.all('user/login').post('params', {
+                Restangular.all('login').post('params', {
                     email: email,
                     password: password
                 }).then(function(data) {
-                    if (data.error) {
-                        resolve(data);
-                    } else {
-                        if (data.token) {
-                            TokenService.setToken(data.token);
-                            $state.go('user');
-                        } else {
-                            return {error: errorConstants.generateTokenFalse};
-                        }
+                    if (!data.error) {
+                        TokenService.setToken(data.token);
                     }
+                    resolve(data);
                 })
             })
         },
         
         authorizeUser: function(authToken) {
             return $q(function(resolve, reject) {
-                Restangular.all('user/authorize').post('params', {
+                Restangular.all('authorize').post('params', {
                     authToken: authToken
                 }).then(function(data) {
-                    console.log(data);
+                    if (!data.error) {
+                        TokenService.setToken(data.token);
+                    }
                     resolve(data);
                 });
             })
