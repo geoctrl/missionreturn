@@ -32,6 +32,19 @@ mrApp.service('UserService', function(
                 })
             })
         },
+
+        logoutUser: function() {
+            TokenService.deleteToken();
+            $state.go('login', {
+                flashMessage: {
+                    content: 'Logged Out Successfully'
+                }
+            })
+        },
+
+        checkUserExists: function() {
+
+        },
         
         authorizeUser: function(authToken) {
             return $q(function(resolve, reject) {

@@ -8,6 +8,7 @@ PersonSchema = new Schema({
     password: {type: String, select: false},
     auth: {type: Boolean, default: false},
     authToken: String,
+    resetPasswordToken: String,
     gender: String,
     img_profile: String,
     img_background: String,

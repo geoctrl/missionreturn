@@ -4,12 +4,16 @@ mrApp.config(function($stateProvider) {
             url: '/signup',
             templateUrl: '/app/signup/signup.html',
             controller: 'signupCtrl',
-            params: {flashMessage: null}
+            params: {
+                flashMessage: {
+                    title: null,
+                    content: null
+                }
+            }
         })
 })
 
     .controller('signupCtrl', function($scope, UserService, $state, tlNotifyService) {
-        tlNotifyService.notify($state.params.flashMessage);
 
         $scope.userSignup = function() {
             $scope.userError = false;
@@ -19,7 +23,9 @@ mrApp.config(function($stateProvider) {
                     $scope.user.password
                 ).then(function(data) {
                         if (data.error) {
-                            tlNotifyService.notify(data.error);
+                            tlNotifyService.notify(data.error, {
+                                title: 'Error'
+                            });
                         } else {
                             $state.go('authorize');
                         }

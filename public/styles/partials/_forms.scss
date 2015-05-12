@@ -71,3 +71,18 @@ textarea {
   max-width: 100%;
   resize: none;
 }
+
+.standard-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 60px 0;
+
+  svg {
+    fill: $color-primary-500;
+  }
+
+  h4 {
+    margin: 0 0 20px 0;
+    color: $color-primary-500;
+  }
+}

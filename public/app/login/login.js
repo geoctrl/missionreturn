@@ -12,9 +12,6 @@ mrApp.config(function($stateProvider) {
 })
 
     .controller('loginCtrl', function($scope, UserService, $state, tlNotifyService) {
-        tlNotifyService.notify($state.params.flashMessage.content, {
-            title: $state.params.flashMessage.title
-        });
 
         $scope.loginUser = function() {
             if (!$scope.loginForm.$invalid) {
@@ -23,9 +20,15 @@ mrApp.config(function($stateProvider) {
                     $scope.user.password
                 ).then(function(data) {
                         if (data.error) {
-                            tlNotifyService.notify(data.error, {title: 'Error'});
+                            tlNotifyService.notify(data.error, {
+                                title: 'Error'
+                            });
                         } else {
-                            $state.go('user', {flashMessage: {title: 'success', content: 'Logged in Successfully'}})
+                            $state.go('user', {
+                                flashMessage: {
+                                    content: 'Logged in Successfully'
+                                }
+                            })
                         }
                     });
             } else {

@@ -2,7 +2,11 @@ mrApp.config(function($stateProvider) {
     $stateProvider
         .state('authorize', {
             url: '/authorize',
-            templateUrl: '/app/authorize/authorize.html'
+            templateUrl: '/app/authorize/authorize.html',
+            params: {flashMessage: {
+                title: null,
+                content: null
+            }}
         })
         .state('authorizeToken', {
             url: '/authorize/:authToken',

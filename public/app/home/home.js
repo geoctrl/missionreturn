@@ -3,7 +3,11 @@ mrApp.config(function($stateProvider) {
         .state('home', {
             url: '/home',
             templateUrl: '/app/home/home.html',
-            controller: 'homeCtrl'
+            controller: 'homeCtrl',
+            params: {flashMessage: {
+                title: null,
+                content: null
+            }}
         })
 })
 

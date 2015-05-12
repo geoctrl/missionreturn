@@ -82,7 +82,7 @@ router
             } else {
                 if (doc) {
                     res.status(200);
-                    res.json(doc)
+                    res.json(doc);
                 } else {
                     res.json({
                         error: 'Unable to authorize'

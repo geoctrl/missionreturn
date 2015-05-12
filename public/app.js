@@ -9,7 +9,7 @@ var mrApp = angular.module('missionReturnApp', [
     .constant('appConstants', {
         logOut: 'user-logged-in',
         logIn: 'user-log-out',
-        skipAuth: ['signup', 'login', 'authorize']
+        skipAuth: ['signup', 'login', 'authorize', 'forgotPassword']
     })
     
     .constant('errorConstants', {
@@ -22,14 +22,26 @@ var mrApp = angular.module('missionReturnApp', [
         RestangularProvider.setBaseUrl('http://localhost:5556/api/');
     })
     
-    .run(function($rootScope, $state, UserService, appConstants, $timeout) {
+    .run(function($rootScope, $state, UserService, appConstants, $timeout, tlNotifyService) {
         $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
             if (appConstants.skipAuth.indexOf(toState.name) == -1) {
                 if (!UserService.isAuthenticated()) {
                     $timeout(function() {
-                        $state.go('login');
+                        $state.go('login', {
+                            flashMessage: {
+                                title: 'Error',
+                                content: "Not logged in"
+                            }
+                        });
                     })
                 }
             }
-        })
+        });
+        $rootScope.$on('$stateChangeSuccess', function(e) {
+            if (!_.isNull($state.params.flashMessage.content)) {
+                tlNotifyService.notify($state.params.flashMessage.content, {
+                    title: $state.params.flashMessage.title
+                });
+            }
+        });
     });
