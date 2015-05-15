@@ -1,6 +1,6 @@
 header.header-main {
   height: 60px;
-  
+
   .header-logo {
     padding: 12px 0;
     float: left;
@@ -17,12 +17,55 @@ header.header-main {
 
 header.header-app {
   @extend header.header-main;
-  
-  background-color: #fff;
+  background-color: $color-primary-500;
   
   .header-logo {
     svg {
-      fill: $color-primary-500;
+      fill: #fff;
+    }
+  }
+
+  .header-nav-container {
+    z-index: $z-index-5;
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    perspective: 1000px;
+  }
+
+  .header-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: #d3d3d3;
+    display: none;
+    -webkit-box-shadow:  0 0 10px rgba(#000, .3);
+    -moz-box-shadow:  0 0 10px rgba(#000, .3);
+    box-shadow:  0 0 10px rgba(#000, .3);
+
+    .list {
+      margin-top: 50px;
+    }
+  }
+
+  .header-hamburger {
+    margin-top: 10px;
+    float: right;
+
+    .gi {
+      font-size: 24px;
+    }
+
+    &:hover {
+      background-color: #fff;
+      color: $color-primary-500;
     }
   }
 }

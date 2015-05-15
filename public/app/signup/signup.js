@@ -27,7 +27,7 @@ mrApp.config(function($stateProvider) {
                                 title: 'Error'
                             });
                         } else {
-                            $state.go('authorize');
+                            $scope.signUpSuccess = true;
                         }
                 });
             } else {

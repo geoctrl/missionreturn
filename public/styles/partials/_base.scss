@@ -31,24 +31,24 @@ $context-menu-md: 300px;
 
 // colors
 $color-primary-500: #F64747;
-$color-primary-100: lighten($color-primary-500, 40%);
-$color-primary-200: lighten($color-primary-500, 30%);
-$color-primary-300: lighten($color-primary-500, 20%);
-$color-primary-400: lighten($color-primary-500, 10%);
-$color-primary-600: darken($color-primary-500, 10%);
-$color-primary-700: darken($color-primary-500, 20%);
-$color-primary-800: darken($color-primary-500, 30%);
-$color-primary-900: darken($color-primary-500, 40%);
+$color-primary-100: lighten($color-primary-500, 32%);
+$color-primary-200: lighten($color-primary-500, 24%);
+$color-primary-300: lighten($color-primary-500, 16%);
+$color-primary-400: lighten($color-primary-500, 8%);
+$color-primary-600: darken($color-primary-500, 8%);
+$color-primary-700: darken($color-primary-500, 16%);
+$color-primary-800: darken($color-primary-500, 24%);
+$color-primary-900: darken($color-primary-500, 32%);
 
 $color-accent-500: #ffd95e;
-$color-accent-100: lighten($color-accent-500, 40%);
-$color-accent-200: lighten($color-accent-500, 30%);
-$color-accent-300: lighten($color-accent-500, 20%);
-$color-accent-400: lighten($color-accent-500, 10%);
-$color-accent-600: darken($color-accent-500, 10%);
-$color-accent-700: darken($color-accent-500, 20%);
-$color-accent-800: darken($color-accent-500, 30%);
-$color-accent-900: darken($color-accent-500, 40%);
+$color-accent-100: lighten($color-accent-500, 32%);
+$color-accent-200: lighten($color-accent-500, 24%);
+$color-accent-300: lighten($color-accent-500, 16%);
+$color-accent-400: lighten($color-accent-500, 8%);
+$color-accent-600: darken($color-accent-500, 8%);
+$color-accent-700: darken($color-accent-500, 16%);
+$color-accent-800: darken($color-accent-500, 24%);
+$color-accent-900: darken($color-accent-500, 32%);
 
 $color-error-100: #ffcfc7;
 $color-error-200: #ffb9ab;

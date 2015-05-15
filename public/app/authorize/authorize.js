@@ -1,16 +1,14 @@
 mrApp.config(function($stateProvider) {
     $stateProvider
-        .state('authorize', {
-            url: '/authorize',
-            templateUrl: '/app/authorize/authorize.html',
-            params: {flashMessage: {
-                title: null,
-                content: null
-            }}
-        })
         .state('authorizeToken', {
             url: '/authorize/:authToken',
-            controller: 'authorizeTokenCtrl'
+            controller: 'authorizeTokenCtrl',
+            params: {
+                flashMessage: {
+                    title: null,
+                    content: null
+                }
+            }
         })
 })
 
@@ -19,9 +17,19 @@ mrApp.config(function($stateProvider) {
         promise.then(function(data) {
             console.log(data);
             if (data.error) {
-                $state.go('login', {flashMessage: 'Error: '+data.error})
+                $state.go('login', {
+                    flashMessage: {
+                        title: 'Error',
+                        content: 'data.error'
+                    }
+                })
             } else {
-                $state.go('user', {flashMessage: 'Your account is now activated'})
+                $state.go('login', {
+                    flashMessage: {
+                        title: 'Success',
+                        content: 'Your account is now activated'
+                    }
+                })
             }
         })
     });

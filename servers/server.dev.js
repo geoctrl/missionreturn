@@ -81,6 +81,8 @@ router
                 res.json({error: err})
             } else {
                 if (doc) {
+                    doc.auth = true;
+                    doc.save();
                     res.status(200);
                     res.json(doc);
                 } else {
@@ -137,12 +139,18 @@ router
         if (req.query.uri) {
             requestParams.uri = req.query.uri;
         }
+        if (_.size(requestParams)) {
+            requestParams.auth = true;
+        }
         
         if (req.headers.token && !_.size(requestParams)) {
-            Person.findOne({token: req.headers.token} ,function(err, doc) {
+            Person.findOne({
+                token: req.headers.token,
+                auth: true
+            },function(err, doc) {
                 if (err) {
                     res.status(500);
-                    res.json({error: err})                    
+                    res.json({error: err})
                 } else {
                     if (doc) {
                         res.status(200);
