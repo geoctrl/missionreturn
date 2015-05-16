@@ -1276,30 +1276,22 @@ header.header-app {
   background-color: #F64747; }
   header.header-app .header-logo svg {
     fill: #fff; }
-  header.header-app .header-nav-container {
+  header.header-app .header-nav {
     z-index: 50;
-    display: none;
-    position: fixed;
+    position: absolute;
+    background-color: #ffd95e;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    -webkit-perspective: 1000px;
-    -moz-perspective: 1000px;
-    perspective: 1000px; }
-  header.header-app .header-nav {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 250px;
-    background-color: #d3d3d3;
     display: none;
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
     header.header-app .header-nav .list {
       margin-top: 50px; }
+      header.header-app .header-nav .list li > a {
+        color: #ba8e00; }
   header.header-app .header-hamburger {
     margin-top: 10px;
     float: right; }
@@ -1308,6 +1300,11 @@ header.header-app {
     header.header-app .header-hamburger:hover {
       background-color: #fff;
       color: #F64747; }
+  header.header-app .header-nav-close {
+    border-color: transparent;
+    background-color: transparent;
+    color: #ba8e00;
+    margin-right: 20px; }
 
 .alert {
   padding: 10px;

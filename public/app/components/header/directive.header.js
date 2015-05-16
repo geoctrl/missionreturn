@@ -26,35 +26,20 @@ mrApp.directive('header', function() {
                     if (element.hasClass('isActive')) {
                         element.removeClass('isActive');
                         Velocity(element, {
-                            rotateY: '90deg',
-                            boxShadowBlur: '50px',
-                            boxShadowX: '-50px'
+                            opacity: 0
                         }, {
                             display: 'none',
-                            duration: 700,
-                            complete: function() {
-                                element.parent().css('display', 'none');
-                            }
+                            easing: 'ease-in',
+                            duration: 400
                         })
                     } else {
                         element.addClass('isActive');
-                        element.parent().css('display', 'block');
                         Velocity(element, {
-                            transformOriginX: '100%',
-                            rotateY: '90deg',
-                            boxShadowBlur: '50px',
-                            boxShadowX: '-50px'
-                        }, {
-                            duration: 0
-                        });
-                        Velocity(element, {
-                            rotateY: '20deg',
-                            backgroundColor: '#fff',
-                            boxShadowBlur: '10px',
-                            boxShadowX: '0'
+                            opacity: 1
                         }, {
                             display: 'block',
-                            duration: 700
+                            duration: 400,
+                            easing: 'ease-out'
                         });
                     }
                 }

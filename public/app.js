@@ -18,7 +18,7 @@ var mrApp = angular.module('missionReturnApp', [
 
     .config(function(RestangularProvider, $urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/user');
         RestangularProvider.setBaseUrl('http://localhost:5556/api/');
     })
     
