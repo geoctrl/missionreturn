@@ -2,7 +2,7 @@ mrApp.config(function($stateProvider) {
     $stateProvider
         .state('signup', {
             url: '/signup',
-            templateUrl: '/app/signup/signup.html',
+            templateUrl: '/app/auth/signup/signup.html',
             controller: 'signupCtrl',
             params: {
                 flashMessage: {

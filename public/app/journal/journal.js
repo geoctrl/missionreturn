@@ -1,9 +1,9 @@
 mrApp.config(function($stateProvider) {
         $stateProvider
-            .state('user', {
-                url: '/user',
-                templateUrl: '/app/user/user.html',
-                controller: 'userCtrl',
+            .state('journal', {
+                url: '/journal',
+                templateUrl: '/app/journal/journal.html',
+                controller: 'journalCtrl',
                 params: {
                     flashMessage: {
                         title: null,
@@ -13,7 +13,7 @@ mrApp.config(function($stateProvider) {
             })
     })
 
-    .controller('userCtrl', function($scope, UserService, TokenService, $state, tlNotifyService) {
+    .controller('journalCtrl', function($scope, UserService, TokenService, $state, tlNotifyService) {
 
 
         $scope.logoutUser = function() {

@@ -2,7 +2,7 @@ mrApp.config(function($stateProvider) {
     $stateProvider
         .state('forgotPassword', {
             url: '/reset-password',
-            templateUrl: '/app/forgotPassword/forgotPassword.html',
+            templateUrl: '/app/auth/forgotPassword/forgotPassword.html',
             controller: 'forgotPasswordCtrl',
             params: {flashMessage: {
                 title: null,

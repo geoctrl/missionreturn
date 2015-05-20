@@ -1273,9 +1273,9 @@ header.header-main, header.header-app {
     margin-top: 11px; }
 
 header.header-app {
-  background-color: #F64747; }
+  background-color: #fff; }
   header.header-app .header-logo svg {
-    fill: #fff; }
+    fill: #F64747; }
   header.header-app .header-nav {
     z-index: 50;
     position: absolute;
@@ -1289,9 +1289,14 @@ header.header-app {
     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
     header.header-app .header-nav .list {
-      margin-top: 50px; }
-      header.header-app .header-nav .list li > a {
-        color: #ba8e00; }
+      margin-top: 30px;
+      padding: 20px; }
+      header.header-app .header-nav .list li {
+        text-align: center; }
+        header.header-app .header-nav .list li > a {
+          color: #ba8e00; }
+        header.header-app .header-nav .list li.divider {
+          background-color: #ba8e00; }
   header.header-app .header-hamburger {
     margin-top: 10px;
     float: right; }
@@ -1300,6 +1305,9 @@ header.header-app {
     header.header-app .header-hamburger:hover {
       background-color: #fff;
       color: #F64747; }
+    @media (min-width: 768px) {
+      header.header-app .header-hamburger {
+        display: none; } }
   header.header-app .header-nav-close {
     border-color: transparent;
     background-color: transparent;

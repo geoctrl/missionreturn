@@ -2,7 +2,7 @@ mrApp.config(function($stateProvider) {
     $stateProvider
         .state('login', {
             url: '/login',
-            templateUrl: '/app/login/login.html',
+            templateUrl: '/app/auth/login/login.html',
             controller: 'loginCtrl',
             params: {flashMessage: {
                 title: null,
@@ -24,7 +24,7 @@ mrApp.config(function($stateProvider) {
                                 title: 'Error'
                             });
                         } else {
-                            $state.go('user', {
+                            $state.go('journal', {
                                 flashMessage: {
                                     content: 'Logged in Successfully'
                                 }
