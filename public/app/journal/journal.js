@@ -13,10 +13,6 @@ mrApp.config(function($stateProvider) {
             })
     })
 
-    .controller('journalCtrl', function($scope, UserService, TokenService, $state, tlNotifyService) {
+    .controller('journalCtrl', function($scope, TokenService, $state, tlNotifyService) {
 
-
-        $scope.logoutUser = function() {
-            UserService.logoutUser();
-        }
-    }); 
+    });

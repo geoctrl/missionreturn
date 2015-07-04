@@ -19,6 +19,7 @@
     "velocity": "~1.2.2",
     "angular-local-storage": "~0.1.5",
     "angular-jwt": "~0.0.6",
-    "crypto-js": "http://crypto-js.googlecode.com/files/CryptoJS%20v3.1.2.zip"
+    "crypto-js": "http://crypto-js.googlecode.com/files/CryptoJS%20v3.1.2.zip",
+    "angular-mocks": "~1.4.0"
   }
 }

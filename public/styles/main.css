@@ -1408,6 +1408,35 @@ header.header-app {
   border-radius: 100px;
   padding: 0 6px; }
 
+ul.nav-links {
+  padding: 0;
+  list-style: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin: 30px 0;
+  font-weight: 700; }
+
+.nav {
+  background-color: #e3e3e3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
+  .nav ul.nav-links li {
+    color: #a3a3a3; }
+
+.nav-logo {
+  width: 27px;
+  height: 27px;
+  background: url("/img/logo-grey.svg") center no-repeat; }
+
+.nav-red {
+  padding: 30px 0;
+  background-color: #F64747; }
+  .nav-red ul.nav-links li {
+    color: #404040; }
+
 .hero-unit {
   background: url("/img/hero1.jpg") center no-repeat;
   background-size: cover;

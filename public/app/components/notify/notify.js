@@ -1,3 +1,11 @@
+/*
+    toaster notification component
+    dependencies: VelocityJS & UnderscoreJS/lodash
+
+    future improvements: remove dependencies
+ */
+
+
 angular.module('tl.toaster-notify', [])
     
     .factory('tlNotifyService', function($compile, $timeout, $q) {
@@ -38,6 +46,7 @@ angular.module('tl.toaster-notify', [])
                 var notification = {},
                     self = this;
 
+                // content is required - return console error
                 if (content) {
                     notification.content = content;
                 } else {
@@ -82,7 +91,9 @@ angular.module('tl.toaster-notify', [])
                     })
                 })
             },
-            
+
+            // helper function
+            // find current index in array
             getIndexFromId: function(notificationId) {
                 var index = '',
                     found = false;
@@ -128,7 +139,7 @@ angular.module('tl.toaster-notify', [])
                 }());
                 
                 $scope.notifyClose = function(notification) {
-                    tlNotifyService.removeNotify(notification, $element);
+                    tlNotifyService.removeNotify(notification);
                 }
             }
         }

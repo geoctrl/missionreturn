@@ -27,12 +27,7 @@ var mrApp = angular.module('missionReturnApp', [
             if (appConstants.skipAuth.indexOf(toState.name) == -1) {
                 if (!UserService.isAuthenticated()) {
                     $timeout(function() {
-                        $state.go('login', {
-                            flashMessage: {
-                                title: 'Error',
-                                content: "Not logged in"
-                            }
-                        });
+                        $state.go('login' );
                     })
                 }
             }

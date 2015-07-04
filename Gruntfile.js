@@ -2,6 +2,12 @@ module.exports = function(grunt){
 
     require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
 
+    var files = {
+        css: ['public/styles/main.css'],
+        html: ['public/index.html','public/app/**/*.html'],
+        js: ['public/app/**/*.js']
+    };
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
@@ -13,7 +19,13 @@ module.exports = function(grunt){
                 NODE_ENV: 'production'
             }
         },
-        
+
+        jasmine: {
+            mr: {
+
+            }
+        },
+
         nodemon: {
             dev: {
                 script: 'servers/server.dev.js',
@@ -35,16 +47,13 @@ module.exports = function(grunt){
                 livereload: true
             },
             css: {
-                files: ['public/styles/main.css']
+                files: files.css
             },
             js: {
-                files: ['public/app/**/*.js']
+                files: files.js
             },
             html: {
-                files: [
-                    ['public/index.html'],
-                    ['public/app/**/*.html']
-                ]
+                files: files.html
             }
         }
 
