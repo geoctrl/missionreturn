@@ -1426,14 +1426,15 @@ ul.nav-links {
       position: relative; }
       ul.nav-links li a:hover, ul.nav-links li a:active, ul.nav-links li a:visited {
         text-decoration: none; }
-      ul.nav-links li a:after {
-        content: '';
-        position: absolute;
-        left: -30px;
-        top: 9px;
-        height: 21px;
-        width: 9px;
-        background-color: transparent; }
+    ul.nav-links li:after {
+      content: '';
+      cursor: default;
+      position: absolute;
+      left: 0;
+      top: 9px;
+      height: 21px;
+      width: 9px;
+      background-color: transparent; }
 
 .nav {
   background-color: #e3e3e3;
@@ -1464,8 +1465,22 @@ ul.nav-links {
         color: #fff; }
     .nav-red ul.nav-links li.isActive a {
       color: #fff; }
-      .nav-red ul.nav-links li.isActive a:after {
-        background-color: #fff; }
+    .nav-red ul.nav-links li.isActive:after {
+      background-color: #fff; }
+
+.nav-white {
+  position: fixed;
+  right: 0;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  background-color: #fff; }
+
+.layout-main {
+  position: relative;
+  background-color: #fff;
+  z-index: 30;
+  margin-left: 180px; }
 
 .hero-unit {
   background: url("/img/hero1.jpg") center no-repeat;

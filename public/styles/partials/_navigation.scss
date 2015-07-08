@@ -20,16 +20,17 @@ ul.nav-links {
       &:hover, &:active, &:visited {
         text-decoration: none;
       }
+    }
 
-      &:after {
-        content: '';
-        position: absolute;
-        left: -30px;
-        top: 9px;
-        height: 21px;
-        width: 9px;
-        background-color: transparent;
-      }
+    &:after {
+      content: '';
+      cursor: default;
+      position: absolute;
+      left: 0;
+      top: 9px;
+      height: 21px;
+      width: 9px;
+      background-color: transparent;
     }
   }
 }
@@ -79,12 +80,21 @@ ul.nav-links {
     &.isActive {
       a {
         color: #fff;
+      }
 
-        &:after {
-          background-color: #fff;
-        }
+      &:after {
+        background-color: #fff;
       }
     }
   }
+}
+
+.nav-white {
+  position: fixed;
+  right: 0;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  background-color: #fff;
 }
 
