@@ -1413,8 +1413,27 @@ ul.nav-links {
   list-style: none;
   text-transform: uppercase;
   font-size: 14px;
-  margin: 30px 0;
+  margin: 30px 0 0 0;
   font-weight: 700; }
+  ul.nav-links li {
+    position: relative; }
+    ul.nav-links li a {
+      cursor: pointer;
+      padding: 10px 0 10px 10px;
+      margin-left: 30px;
+      display: inline-block;
+      text-decoration: none;
+      position: relative; }
+      ul.nav-links li a:hover, ul.nav-links li a:active, ul.nav-links li a:visited {
+        text-decoration: none; }
+      ul.nav-links li a:after {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 9px;
+        height: 21px;
+        width: 9px;
+        background-color: transparent; }
 
 .nav {
   background-color: #e3e3e3;
@@ -1423,19 +1442,30 @@ ul.nav-links {
   left: 0;
   right: 0;
   bottom: 0; }
-  .nav ul.nav-links li {
+  .nav ul.nav-links li a {
     color: #a3a3a3; }
+    .nav ul.nav-links li a:hover {
+      color: #707070; }
 
 .nav-logo {
   width: 27px;
   height: 27px;
-  background: url("/img/logo-grey.svg") center no-repeat; }
+  background: url("/img/logo-grey.svg") center no-repeat;
+  margin-left: 40px; }
 
 .nav-red {
   padding: 30px 0;
   background-color: #F64747; }
   .nav-red ul.nav-links li {
     color: #404040; }
+    .nav-red ul.nav-links li a {
+      color: #404040; }
+      .nav-red ul.nav-links li a:hover {
+        color: #fff; }
+    .nav-red ul.nav-links li.isActive a {
+      color: #fff; }
+      .nav-red ul.nav-links li.isActive a:after {
+        background-color: #fff; }
 
 .hero-unit {
   background: url("/img/hero1.jpg") center no-repeat;

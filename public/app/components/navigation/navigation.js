@@ -1,9 +1,7 @@
-mrApp.directive('navigation', function() {
+mrApp.directive('navigation', function($state) {
 
     var navigationLink = function(scope, element, attrs) {
-
-
-
+        scope.currentState = $state.current.name;
     };
 
     return {
