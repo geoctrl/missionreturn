@@ -1,0 +1,25 @@
+.journal-list {
+  padding: 20px;
+
+  .journal-list-name {
+    font-size: 22px;
+    margin-bottom: 4px;
+    font-weight: $font-weight-normal;
+  }
+
+  .journal-list-date {
+    font-size: 12px;
+    font-weight: $font-weight-normal;
+    color: $color-grey-800;
+  }
+
+  .journal-list-entry {
+    color: $color-grey-800;
+    font-size: 11px;
+    font-weight: $font-weight-normal;
+  }
+
+  &:hover {
+    background-color: #f3f3f3;
+  }
+}

@@ -235,13 +235,13 @@ button {
      grey
    ------------------------------------*/
   &.btn-grey {
-    border-color: rgba($color-grey-500, .3);
-    background-color: rgba($color-grey-500, .1);
-    color: $color-grey-700;
+    border-color: $color-grey-100;
+    background-color: transparent;
+    color: $color-grey-200;
 
     &:hover {
-      border-color: rgba($color-grey-500, .5);
-      background-color: rgba($color-grey-500, .3);
+      border-color: $color-grey-100;
+      background-color: $color-grey-100;
       color: $color-grey-700;
     }
   }

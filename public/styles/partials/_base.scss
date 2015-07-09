@@ -1,16 +1,14 @@
 // font weights
 $font-weight-thin: 100;
-$font-weight-light: 200;
-$font-weight-book: 300;
-$font-weight-regular: 400;
-$font-weight-semibold: 500;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
 $font-weight-bold: 700;
-$font-weight-heavy: 800;
-$font-weight-black: 900;
+$font-weight-ultra: 900;
 
 // base font
-$base-font-family: 'Glober', Helvetica, sans-serif;
-$base-font-weight: $font-weight-regular;
+$base-font-family: 'Roboto', Helvetica, sans-serif;
+$base-font-weight: $font-weight-normal;
 $base-font-size: 16px;
 
 $line-height-base: 1.428571429 !default;
