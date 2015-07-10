@@ -48,6 +48,10 @@ mrApp
                 $scope.animate($scope.ngModel);
             });
 
+            $scope.$watch('ngModel', function() {
+                $scope.animate($scope.ngModel);
+            })
+
 
         };
 

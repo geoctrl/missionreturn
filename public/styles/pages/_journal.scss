@@ -16,8 +16,9 @@
 
     .jl-checkbox {
       position: absolute;
-      top: 6px;
+      top: 50%;
       left: 6px;
+      margin-top: -12px;
       font-size: 24px;
       line-height: 24px;
       display: none;
@@ -44,7 +45,6 @@
     }
 
     &:hover {
-      background-color: #f3f3f3;
 
       .jl-checkbox {
         display: block;

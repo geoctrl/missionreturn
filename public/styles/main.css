@@ -1330,43 +1330,6 @@ header.header-app {
   font-weight: 700;
   margin-bottom: 10px; }
 
-.tl-notify-container {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 50; }
-
-.tl-notify {
-  background-color: #404040;
-  color: #fff;
-  margin-top: 10px;
-  border-radius: 4px;
-  padding: 10px 40px 10px 14px;
-  position: relative;
-  display: none; }
-  .tl-notify .tl-notify-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    height: 20px;
-    width: 20px;
-    background-color: transparent;
-    border: none;
-    text-align: center;
-    border-radius: 3px;
-    padding: 0;
-    margin: 0;
-    color: rgba(255, 255, 255, 0.5); }
-    .tl-notify .tl-notify-close:hover {
-      background-color: #F64747;
-      color: #fff; }
-    .tl-notify .tl-notify-close i {
-      font-size: 14px; }
-  .tl-notify .tl-notify-title {
-    font-weight: 700; }
-  .tl-notify.tl-notify-error {
-    background-color: #ff795e; }
-
 .list {
   list-style: none;
   margin: 0;
@@ -1415,6 +1378,50 @@ header.header-app {
   border: solid 1px #808080;
   border-radius: 100px;
   padding: 0 6px; }
+
+.layout-main {
+  position: relative;
+  background-color: #fff;
+  margin-left: 180px;
+  padding-top: 1px;
+  margin-top: -1px; }
+
+.tl-notify-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 50; }
+
+.tl-notify {
+  background-color: #404040;
+  color: #fff;
+  margin-top: 10px;
+  border-radius: 4px;
+  padding: 10px 40px 10px 14px;
+  position: relative;
+  display: none; }
+  .tl-notify .tl-notify-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    border-radius: 3px;
+    padding: 0;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.5); }
+    .tl-notify .tl-notify-close:hover {
+      background-color: #F64747;
+      color: #fff; }
+    .tl-notify .tl-notify-close i {
+      font-size: 14px; }
+  .tl-notify .tl-notify-title {
+    font-weight: 700; }
+  .tl-notify.tl-notify-error {
+    background-color: #ff795e; }
 
 ul.nav-links {
   padding: 0;
@@ -1484,24 +1491,19 @@ ul.nav-links {
   bottom: 0;
   background-color: #fff; }
 
-.layout-main {
+action-bar {
   position: relative;
-  background-color: #fff;
-  margin-left: 180px;
-  padding-top: 1px;
-  margin-top: -1px; }
-
-.action-bar-container {
-  position: relative;
+  display: block;
   margin: 30px;
-  z-index: 0;
   height: 58px; }
-  .action-bar-container .action-bar-number {
+  action-bar .action-bar-number {
     line-height: 38px;
     font-size: 16px;
     color: #fff;
     margin: 0 20px 0 10px; }
-  .action-bar-container .action-bar {
+  action-bar action-bar-default {
+    background-color: #fff;
+    display: block;
     height: 58px;
     padding: 10px;
     position: absolute;
@@ -1510,16 +1512,8 @@ ul.nav-links {
     right: 0;
     border-radius: 4px;
     z-index: 1; }
-  .action-bar-container .action-bar-contain {
-    background-color: #fff;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 4px;
-    z-index: 10; }
-  .action-bar-container .action-bar-selected {
+  action-bar action-bar-select {
+    display: none;
     padding: 10px;
     border-radius: 4px;
     background-color: #404040;
@@ -1527,16 +1521,7 @@ ul.nav-links {
     top: 0;
     left: 0;
     right: 0;
-    opacity: 0;
-    transition: transform 300ms ease, opacity 300ms ease;
-    transform: scale(1.1, 1.1);
-    z-index: 0; }
-  .action-bar-container.isActive .action-bar-contain {
-    z-index: 0; }
-  .action-bar-container.isActive .action-bar-selected {
-    z-index: 10;
-    opacity: 1;
-    transform: scale(1, 1); }
+    opacity: 0; }
 
 .hero-unit {
   background: url("/img/hero1.jpg") center no-repeat;
@@ -1588,8 +1573,9 @@ ul.nav-links {
     transition: transform 300ms ease; }
     .jl-wrapper .jl .jl-checkbox {
       position: absolute;
-      top: 6px;
+      top: 50%;
       left: 6px;
+      margin-top: -12px;
       font-size: 24px;
       line-height: 24px;
       display: none; }
@@ -1607,10 +1593,8 @@ ul.nav-links {
       color: #505050;
       font-size: 11px;
       font-weight: 400; }
-    .jl-wrapper .jl:hover {
-      background-color: #f3f3f3; }
-      .jl-wrapper .jl:hover .jl-checkbox {
-        display: block; }
+    .jl-wrapper .jl:hover .jl-checkbox {
+      display: block; }
   .jl-wrapper.isActive .jl {
     background-color: #f3f3f3;
     z-index: 10;

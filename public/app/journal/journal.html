@@ -3,22 +3,20 @@
 <div class="container">
     <div class="layout-main" layout-height>
 
-        <div class="action-bar-container" ng-class="{isActive: controlEntry.selected}">
-            <div class="action-bar-contain">
-                <div class="action-bar">
-                    <button class="btn btn-primary pull-left">
-                        <i class="gi gi-add"></i>
-                    </button>
-                    <button class="btn btn-grey pull-right">
-                        <i class="gi gi-sort"></i>
-                        <i class="gi gi-arrow-drop-down"></i>
-                    </button>
-                    <button class="btn btn-grey pull-right mr-md">
-                        <i class="gi gi-search"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="action-bar-selected">
+        <action-bar select="controlEntry.selected">
+            <action-bar-default>
+                <button class="btn btn-primary pull-left">
+                    <i class="gi gi-add"></i>
+                </button>
+                <button class="btn btn-grey pull-right">
+                    <i class="gi gi-sort"></i>
+                    <i class="gi gi-arrow-drop-down"></i>
+                </button>
+                <button class="btn btn-grey pull-right mr-md">
+                    <i class="gi gi-search"></i>
+                </button>
+            </action-bar-default>
+            <action-bar-select>
                 <button class="btn btn-transparent pull-left" ng-click="controlEntry.deselect();">
                     <i class="gi gi-close"></i>
                 </button>
@@ -31,9 +29,8 @@
                 <button class="btn btn-transparent pull-right">
                     <i class="gi gi-share"></i>
                 </button>
-            </div>
-
-        </div>
+            </action-bar-select>
+        </action-bar>
 
         <div class="jl-wrapper" ng-repeat="entry in journal.entries"
              ng-class="{isActive: entry.checked}">
