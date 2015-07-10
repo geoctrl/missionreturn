@@ -3,23 +3,52 @@
 <div class="container">
     <div class="layout-main" layout-height>
 
-        <div class="action-bar">
-            <button class="btn btn-primary-fill mr-sm">Add Journal Entry</button>
-            <button class="btn btn-grey">
-                Sort
-                <span class="caret"></span>
-            </button>
-
+        <div class="action-bar-container" ng-class="{isActive: controlEntry.selected}">
+            <div class="action-bar-contain">
+                <div class="action-bar">
+                    <button class="btn btn-primary pull-left">
+                        <i class="gi gi-add"></i>
+                    </button>
+                    <button class="btn btn-grey pull-right">
+                        <i class="gi gi-sort"></i>
+                        <i class="gi gi-arrow-drop-down"></i>
+                    </button>
+                    <button class="btn btn-grey pull-right mr-md">
+                        <i class="gi gi-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="action-bar-selected">
+                <button class="btn btn-transparent pull-left" ng-click="controlEntry.deselect();">
+                    <i class="gi gi-close"></i>
+                </button>
+                <span class="action-bar-number">
+                    {{controlEntry.selected}} Selected
+                </span>
+                <button class="btn btn-transparent pull-right">
+                    <i class="gi gi-delete"></i>
+                </button>
+                <button class="btn btn-transparent pull-right">
+                    <i class="gi gi-share"></i>
+                </button>
+            </div>
 
         </div>
 
-        <div class="journal-list">
-            <div class="journal-list-name">
-                This is title one
-            </div>
-            <div class="journal-list-date">
-                Jan, 24th 2014
+        <div class="jl-wrapper" ng-repeat="entry in journal.entries"
+             ng-class="{isActive: entry.checked}">
+            <div class="jl">
+                <checkbox class="jl-checkbox"
+                          ng-model="entry.checked" ng-click="controlEntry.getSelected()"></checkbox>
+                <div class="jl-name">
+                    {{entry.name}}
+                </div>
+                <div class="jl-date">
+                    {{entry.date | date: 'MMM d, yyyy'}}
+                </div>
             </div>
         </div>
+        {{}}
     </div>
 </div>
+

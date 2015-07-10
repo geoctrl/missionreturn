@@ -1,25 +1,68 @@
-.journal-list {
-  padding: 20px;
+.jl-wrapper {
+  background-color: $color-primary-300;
+  position: relative;
+  height: 106px;
 
-  .journal-list-name {
-    font-size: 22px;
-    margin-bottom: 4px;
-    font-weight: $font-weight-normal;
+  .jl {
+    font-family: 'Roboto Slab', sans-serif;
+    padding: 30px 40px;
+    background-color: #fff;
+    position: relative;
+    -webkit-transition: transform 300ms ease;
+    -moz-transition: transform 300ms ease;
+    -ms-transition: transform 300ms ease;
+    -o-transition: transform 300ms ease;
+    transition: transform 300ms ease;
+
+    .jl-checkbox {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      font-size: 24px;
+      line-height: 24px;
+      display: none;
+    }
+
+    .jl-name {
+      font-size: 24px;
+      line-height: 24px;
+      margin-bottom: 8px;
+      font-weight: $font-weight-normal;
+    }
+
+    .jl-date {
+      font-size: 14px;
+      line-height: 14px;
+      font-weight: $font-weight-normal;
+      color: $color-grey-800;
+    }
+
+    .jl-entry {
+      color: $color-grey-800;
+      font-size: 11px;
+      font-weight: $font-weight-normal;
+    }
+
+    &:hover {
+      background-color: #f3f3f3;
+
+      .jl-checkbox {
+        display: block;
+      }
+    }
   }
 
-  .journal-list-date {
-    font-size: 12px;
-    font-weight: $font-weight-normal;
-    color: $color-grey-800;
+  &.isActive {
+    .jl {
+      background-color: #f3f3f3;
+      z-index: $z-index-1;
+      transform-origin: left;
+      transform: translate(8px, 0);
+    }
+
+    .jl-checkbox {
+      display: block;
+    }
   }
 
-  .journal-list-entry {
-    color: $color-grey-800;
-    font-size: 11px;
-    font-weight: $font-weight-normal;
-  }
-
-  &:hover {
-    background-color: #f3f3f3;
-  }
 }

@@ -86,3 +86,21 @@ textarea {
     color: $color-primary-500;
   }
 }
+
+checkbox {
+  height: 24px;
+  width: 24px;
+  color: $color-grey-300;
+
+  i {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+
+    &.gi-check-box {
+      color: $color-primary-500
+    }
+  }
+}

@@ -7,6 +7,8 @@ var mrApp = angular.module('missionReturnApp', [
 ])
 
     .constant('appConstants', {
+        primaryColor: '#F64747',
+        secondaryColor: '#ffd95e',
         logOut: 'user-logged-in',
         logIn: 'user-log-out',
         skipAuth: ['signup', 'login', 'authorize', 'forgotPassword']
